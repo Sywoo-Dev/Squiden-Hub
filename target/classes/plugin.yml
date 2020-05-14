@@ -1,0 +1,12 @@
+name: LionHub
+authors:
+  - [YAAAAAAZHOG]
+main: fr.yazhog.lionhub.Hub
+version: 1.0.0
+depend: [LionAPI]
+commands:
+  join:
+  perm:
+  rank:
+  jump:
+  requests:

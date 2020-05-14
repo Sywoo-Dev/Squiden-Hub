@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>fr.yazhog.hub</groupId>
+	<artifactId>LionHub</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.7.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>cloudnet-repo</id>
+			<url>https://cloudnetservice.eu/repositories/</url>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<!--Spigot API -->
+		<dependency>
+			<groupId>org.spigotmc</groupId>
+			<artifactId>spigot-api</artifactId>
+			<version>1.8.8-R0.1-SNAPSHOT</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/spigot-1.8.8.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>fr.yazhog.lionapi</groupId>
+			<artifactId>LionUHCAPI</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/LionUHCAPI-0.0.1-SNAPSHOT.jar</systemPath>
+		</dependency>
+		<!-- Lion API -->
+<!-- 		<dependency>
+			<groupId>fr.yazhog.lionapi</groupId>
+			<artifactId>LionUHCAPI</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<scope>provided</scope>
+		</dependency> -->
+		<!-- cloudnet application for modules -->
+		<dependency>
+			<groupId>de.dytanic.cloudnet</groupId>
+			<artifactId>cloudnet</artifactId>
+			<version>3.2.0-RELEASE</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- cloudnet bridge module for plugins and modules -->
+		<dependency>
+			<groupId>de.dytanic.cloudnet</groupId>
+			<artifactId>cloudnet-bridge</artifactId>
+			<version>3.2.0-RELEASE</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- cloudnet syncproxy module for plugins and modules -->
+		<dependency>
+			<groupId>de.dytanic.cloudnet</groupId>
+			<artifactId>cloudnet-syncproxy</artifactId>
+			<version>3.2.0-RELEASE</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- cloudnet driver for plugins and modules -->
+		<dependency>
+			<groupId>de.dytanic.cloudnet</groupId>
+			<artifactId>cloudnet-driver</artifactId>
+			<version>3.2.0-RELEASE</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+</project>
