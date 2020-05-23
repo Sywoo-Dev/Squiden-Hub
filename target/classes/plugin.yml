@@ -1,9 +1,8 @@
-name: LionHub
-authors:
-  - [YAAAAAAZHOG]
-main: fr.yazhog.lionhub.Hub
+name: Hub
+author: Sywoo
+main: fr.sywoo.hub.Hub
 version: 1.0.0
-depend: [LionAPI]
+depend: [API]
 commands:
   join:
   perm:
