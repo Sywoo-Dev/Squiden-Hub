@@ -1,5 +1,6 @@
 package fr.sywoo.hub;
 
+import java.util.ArrayList;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
@@ -9,6 +10,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import fr.sywoo.api.spigot.LionSpigot;
 import fr.sywoo.api.utils.ChatManager;
+import fr.sywoo.hub.animas.AnimArena;
+import fr.sywoo.hub.enums.Games;
 import fr.sywoo.hub.scoreboard.ScoreboardManager;
 import fr.sywoo.hub.task.QueueRunnable;
 import fr.sywoo.hub.utils.Classement;
@@ -27,6 +30,8 @@ public class Hub extends JavaPlugin {
     private HologramsList hologramsList;
 
     public static Hub instance;
+    
+    public ArrayList<Games> maintaining = new ArrayList<Games>();
     
 	private ChatManager chat;
 	
@@ -50,6 +55,7 @@ public class Hub extends JavaPlugin {
 
         Bukkit.getScheduler().runTaskTimer(this, new QueueRunnable(), 0, 10);
         classement = new Classement(new Location(68, 20, -63).getAsLocation(), "§dClassement du jump", LionSpigot.get().getAccountManager().getJumpers());
+        new AnimArena();
     }
 
     @Override

@@ -6,47 +6,19 @@ import de.dytanic.cloudnet.ext.bridge.ServiceInfoSnapshotUtil;
 
 public class PlayerUtils {
 
-	public static int getUhcPlayers(){
-		int i = 0;
-		try{i = CloudNetDriver.getInstance().getCloudServiceProvider().getStartedCloudServices().stream()
-				.filter(service -> service.getServiceId().getName().startsWith("UHC-")).mapToInt(serviceInfoSnapshot -> ServiceInfoSnapshotUtil.getPlayers(serviceInfoSnapshot).size()).sum();
-		}catch(Exception e) {
-			return 0;
-		}
-		return i;
-	}
 	
-	public static int getKapturPlayers(){
+	@SuppressWarnings("deprecation")
+	public static int getGamePlayer(String str){
 		int i = 0;
 		try{i = CloudNetDriver.getInstance().getCloudServiceProvider().getStartedCloudServices().stream()
-				.filter(service -> service.getServiceId().getName().startsWith("Kaptur-")).mapToInt(serviceInfoSnapshot -> ServiceInfoSnapshotUtil.getPlayers(serviceInfoSnapshot).size()).sum();
+				.filter(service -> service.getServiceId().getName().startsWith(str + "-")).mapToInt(serviceInfoSnapshot -> ServiceInfoSnapshotUtil.getPlayers(serviceInfoSnapshot).size()).sum();
 		}catch(Exception e) {
 			return 0;
 		}
 		return i;
 	}
 
-	public int getArenaPlayers(){
-		int i = 0;
-		try{i = CloudNetDriver.getInstance().getCloudServiceProvider().getStartedCloudServices().stream()
-				.filter(service -> service.getServiceId().getName().startsWith("Arena-")).mapToInt(serviceInfoSnapshot -> ServiceInfoSnapshotUtil.getPlayers(serviceInfoSnapshot).size()).sum();
-	}catch (Exception e) {
-		return 0;
-	}
-		return i;
-	}
-	
-	public static int getSkywarsPlayers(){
-		int i = 0;
-	try{i = CloudNetDriver.getInstance().getCloudServiceProvider().getStartedCloudServices().stream()
-				.filter(service -> service.getServiceId().getName().startsWith("Skywars-")).mapToInt(serviceInfoSnapshot -> ServiceInfoSnapshotUtil.getPlayers(serviceInfoSnapshot).size()).sum();
-	}catch (Exception e) {
-		return 0;
-	}
-		return i;
-	}
-
-
+	@SuppressWarnings("deprecation")
 	public static int getPlayers(ServiceInfoSnapshot service){
 		int server = 0;
 		if(ServiceInfoSnapshotUtil.getPlayers(service) == null){

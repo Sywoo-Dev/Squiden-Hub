@@ -24,7 +24,8 @@ public class LobbyGui extends IQuickInventory {
         this.hub = hub;
     }
 
-    @Override
+    @SuppressWarnings({ "static-access", "deprecation" })
+	@Override
     public void contents(QuickInventory quickInventory) {
         quickInventory.setHorizontalLine(new QuickItem(Material.STAINED_GLASS_PANE).setName(" ").toItemStack(), 0, 8);
         quickInventory.setHorizontalLine(new QuickItem(Material.STAINED_GLASS_PANE).setName(" ").toItemStack(), 35, 44);

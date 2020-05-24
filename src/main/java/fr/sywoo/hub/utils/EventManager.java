@@ -8,7 +8,6 @@ import fr.sywoo.hub.command.JumpCommand;
 import fr.sywoo.hub.command.PermCommand;
 import fr.sywoo.hub.command.RankCommand;
 import fr.sywoo.hub.listeners.CancelledEvents;
-import fr.sywoo.hub.listeners.EntityUse;
 import fr.sywoo.hub.listeners.PlayerChat;
 import fr.sywoo.hub.listeners.PlayerJoin;
 import fr.sywoo.hub.listeners.PlayerMove;
@@ -29,7 +28,6 @@ public class EventManager {
 
     public void register(PluginManager pm) {
         pm.registerEvents(new PlayerJoin(hub), hub);
-        pm.registerEvents(new EntityUse(), hub);
         pm.registerEvents(new PlayerQuit(hub), hub);
         pm.registerEvents(new CancelledEvents(), hub);
         pm.registerEvents(new PlayerMove(), hub);

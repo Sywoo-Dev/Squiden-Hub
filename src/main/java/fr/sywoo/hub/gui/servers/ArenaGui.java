@@ -19,7 +19,8 @@ public class ArenaGui extends IQuickInventory {
         super("§aChoisis un serveur Arena", 9*5);
     }
 
-    @Override
+    @SuppressWarnings("deprecation")
+	@Override
     public void contents(QuickInventory quickInventory) {
         quickInventory.setHorizontalLine(new QuickItem(Material.STAINED_GLASS_PANE).setName(" ").toItemStack(), 0, 8);
         quickInventory.setHorizontalLine(new QuickItem(Material.STAINED_GLASS_PANE).setName(" ").toItemStack(), 35, 44);
@@ -31,7 +32,9 @@ public class ArenaGui extends IQuickInventory {
                 .filter(serviceInfoSnapshot -> serviceInfoSnapshot.getServiceId().getName().startsWith("Arena-"))
                 .forEach(serviceInfoSnapshot -> {
                     String arena = serviceInfoSnapshot.getServiceId().getName().substring(0, 5); String number = serviceInfoSnapshot.getServiceId().getName().substring(6);
-                    String name = ChatColor.DARK_GRAY + arena + " §b#" + number;quickInventory.addItem(new QuickItem(Material.STAINED_CLAY, 1, (byte) 5)
+                    String name = ChatColor.DARK_GRAY + arena + " §b#" + number;
+                    
+                    quickInventory.addItem(new QuickItem(Material.STAINED_CLAY, 1, (byte) 5)
                             .setName(name + " §7(" + ServiceInfoSnapshotUtil.getPlayers(serviceInfoSnapshot).size() + " joueurs)")
                             .setLore("" , "§8⤷ §eClique ici pour rejoindre")
                             .addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 65)
