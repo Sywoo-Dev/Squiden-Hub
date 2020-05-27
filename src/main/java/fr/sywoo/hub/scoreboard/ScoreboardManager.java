@@ -1,45 +1,46 @@
 package fr.sywoo.hub.scoreboard;
 
-
-import fr.sywoo.hub.Hub;
-import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
+import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
+
+import fr.sywoo.api.spigot.LionSpigot;
+import fr.sywoo.hub.Hub;
+
 public class ScoreboardManager {
     private final Map<Player, PersonalScoreboard> scoreboards;
-    private final ScheduledFuture glowingTask;
-    private final ScheduledFuture reloadingTask;
+    private final ScheduledFuture<?> glowingTask;
+    private final ScheduledFuture<?> reloadingTask;
     private int ipCharIndex;
     private int cooldown;
 
-    public ScoreboardManager(Hub hub) {
+    public ScoreboardManager(Hub main) {
         scoreboards = new HashMap<>();
         ipCharIndex = 0;
         cooldown = 0;
 
-        glowingTask = hub.getScheduledExecutorService().scheduleAtFixedRate(() ->
+        glowingTask = main.getScheduledExecutorService().scheduleAtFixedRate(() ->
         {
             String ip = colorIpAt();
             for (Map.Entry<Player, PersonalScoreboard> scoreboard : scoreboards.entrySet())
-                hub.getExecutorMonoThread().execute(() -> scoreboard.getValue().setLines(ip));
+                main.getExecutorMonoThread().execute(() -> scoreboard.getValue().setLines(ip));
         }, 80, 80, TimeUnit.MILLISECONDS);
 
-        reloadingTask = hub.getScheduledExecutorService().scheduleAtFixedRate(() ->
+        reloadingTask = main.getScheduledExecutorService().scheduleAtFixedRate(() ->
         {
             for (PersonalScoreboard scoreboard : scoreboards.values())
-                hub.getExecutorMonoThread().execute(scoreboard::reloadData);
+                main.getExecutorMonoThread().execute(scoreboard::reloadData);
         }, 20, 20, TimeUnit.SECONDS);
     }
 
     public void onDisable() {
         scoreboards.values().forEach(PersonalScoreboard::onLogout);
     }
-
+    
     public void onLogin(Player player) {
         if (scoreboards.containsKey(player)) {
             return;
@@ -61,7 +62,7 @@ public class ScoreboardManager {
     }
 
     private String colorIpAt() {
-        String ip = "lionuhc.eu";
+        String ip = LionSpigot.get().getProjectName();
 
         if (cooldown > 0) {
             cooldown--;
@@ -93,5 +94,13 @@ public class ScoreboardManager {
 
         return ChatColor.WHITE + formattedIp.toString();
     }
+
+	public ScheduledFuture<?> getGlowingTask() {
+		return glowingTask;
+	}
+
+	public ScheduledFuture<?> getReloadingTask() {
+		return reloadingTask;
+	}
 
 }

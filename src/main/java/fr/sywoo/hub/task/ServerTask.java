@@ -9,7 +9,8 @@ import fr.sywoo.api.spigot.LionSpigot;
 
 public class ServerTask extends BukkitRunnable {
 
-    @Override
+    @SuppressWarnings("deprecation")
+	@Override
     public void run() {
         boolean needStart = false;
         for(ServiceInfoSnapshot snapshot : CloudNetDriver.getInstance().getCloudServiceProvider().getStartedCloudServices()){

@@ -1,6 +1,5 @@
 package fr.sywoo.hub.listeners.jump;
 
-import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -18,6 +17,8 @@ import fr.sywoo.api.item.QuickItem;
 import fr.sywoo.api.sanction.BanData;
 import fr.sywoo.api.spigot.LionSpigot;
 import fr.sywoo.hub.Hub;
+import fr.sywoo.hub.items.JumpCheckpointItem;
+import fr.sywoo.hub.items.JumpLeaveItem;
 import fr.sywoo.hub.jump.CheckPoint;
 import fr.sywoo.hub.player.JumpPlayer;
 import fr.sywoo.hub.utils.FormatTime;
@@ -33,11 +34,8 @@ public class Jump implements Listener {
     @EventHandler
     public void onMove(PlayerMoveEvent event){
         Player player = event.getPlayer();
-        DecimalFormat decimalFormat = new DecimalFormat("#");
         Location location = new Location(player.getWorld(), player.getLocation().getX(), (player.getLocation().getY() - 1), player.getLocation().getZ());
-        int x = Integer.parseInt(decimalFormat.format(player.getLocation().getX())),
-                y = Integer.parseInt(decimalFormat.format(player.getLocation().getY())),
-                z = Integer.parseInt(decimalFormat.format(player.getLocation().getZ()));
+
         for(CheckPoint checkPoint : CheckPoint.values()){
             if(checkPoint.getCuboid().contains(player)){
                 if(JumpPlayer.getInfos(player) == null && checkPoint == CheckPoint.START) {
@@ -50,22 +48,22 @@ public class Jump implements Listener {
                     player.setGameMode(GameMode.ADVENTURE);
                     player.getInventory().clear();
                     player.updateInventory();
-                    player.getInventory().setItem(0, new QuickItem(Material.SLIME_BALL).setName("§a§lRevenir au checkpoint").toItemStack());
-                    player.getInventory().setItem(4, new QuickItem(Material.REDSTONE).setName("§c§lQuitter le jump").toItemStack());
+                    player.getInventory().setItem(0, new JumpCheckpointItem().toItemStack());
+                    player.getInventory().setItem(4, new JumpLeaveItem().toItemStack());
                     return;
                 } else if(checkPoint == CheckPoint.FIN){
                     if(JumpPlayer.getInfos(player) == null) return;
                     if(JumpPlayer.getInfos(player).getSec() <= 105){
                         Date date = new Date();
                         Calendar calendar = Calendar.getInstance();
-                        calendar.add(Calendar.YEAR, 10);
+                        calendar.add(Calendar.YEAR, 1);
                         date = calendar.getTime();
                         LionSpigot.get().getAccountManager().update(LionSpigot.get().getAccountManager().get(player.getUniqueId())
                                 .setBanData(new BanData("Vous avez été banni car vous avez fini le jump trop rapidement, " +
                                         "donc pour suspections de cheat(s). Réclamation possible sur notre discord : https://discord.gg/jph5PhY=",
                                         date, "§c§l§nLe Plugin")));
                         player.kickPlayer("Vous avez été banni car vous avez fini le jump trop rapidement, " +
-                                "donc pour suspections de cheat(s). Réclamation possible sur notre discord : https://discord.gg/jph5PhY=");
+                                "donc pour suspections de cheat(s). Réclamation possible sur notre discord : https://discord.gg/6fpXs8U");
                         return;
                     }
                     JumpPlayer.getInfos(player).stop();

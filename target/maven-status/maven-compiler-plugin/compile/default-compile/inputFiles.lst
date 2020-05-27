@@ -3,6 +3,7 @@ D:\Workspace\Hub\src\main\java\fr\sywoo\hub\gui\servers\ArenaGui.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\scoreboard\PersonalScoreboard.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\command\CommandJoin.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\animas\Animatronic.java
+D:\Workspace\Hub\src\main\java\fr\sywoo\hub\items\JumpLeaveItem.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\npc\KapturGame.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\utils\EventManager.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\items\GuildItem.java
@@ -14,11 +15,11 @@ D:\Workspace\Hub\src\main\java\fr\sywoo\hub\task\QueueRunnable.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\command\RankCommand.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\utils\Location.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\Hub.java
+D:\Workspace\Hub\src\main\java\fr\sywoo\hub\listeners\PlayerJump.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\scoreboard\VObjective.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\command\PermCommand.java
-D:\Workspace\Hub\src\main\java\fr\sywoo\hub\utils\AnvilGui.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\player\JumpPlayer.java
-D:\Workspace\Hub\src\main\java\fr\sywoo\hub\listeners\EntityUse.java
+D:\Workspace\Hub\src\main\java\fr\sywoo\hub\items\JumpCheckpointItem.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\gui\servers\UHCGui.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\items\GameSelectorItem.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\items\LobbySelectorItem.java
@@ -40,6 +41,7 @@ D:\Workspace\Hub\src\main\java\fr\sywoo\hub\gui\rank\RankMenu.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\utils\Classement.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\scoreboard\Reflection.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\command\JumpCommand.java
+D:\Workspace\Hub\src\main\java\fr\sywoo\hub\enums\Games.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\gui\MainGui.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\utils\TeamsTagsManager.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\items\ShopItem.java
@@ -52,4 +54,3 @@ D:\Workspace\Hub\src\main\java\fr\sywoo\hub\gui\servers\uhcs\LgGUI.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\jump\CheckPoint.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\listeners\PlayerQuit.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\gui\rank\AcceptCreateRank.java
-D:\Workspace\Hub\src\main\java\fr\sywoo\hub\listeners\jump\JumpInteract.java

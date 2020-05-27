@@ -49,7 +49,7 @@ public class Classement {
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	private HashMap sort(HashMap map) {
+	private HashMap<String, Integer> sort(HashMap map) {
 		List linkedlist = new LinkedList(map.entrySet());
 		Collections.sort(linkedlist, new Comparator() {
 			public int compare(Object o1, Object o2) {

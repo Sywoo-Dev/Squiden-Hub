@@ -68,7 +68,8 @@ public class Reflection {
         }
     }
 
-    public static <T> T callMethod(Method method, Object instance, Object... paramaters) {
+    @SuppressWarnings("unchecked")
+	public static <T> T callMethod(Method method, Object instance, Object... paramaters) {
         if (method == null) throw new RuntimeException("No such method");
         method.setAccessible(true);
         try {
@@ -81,7 +82,8 @@ public class Reflection {
     }
 
 
-    public static <T> Constructor<T> makeConstructor(Class<?> clazz, Class<?>... paramaterTypes) {
+    @SuppressWarnings("unchecked")
+	public static <T> Constructor<T> makeConstructor(Class<?> clazz, Class<?>... paramaterTypes) {
         try {
             return (Constructor<T>) clazz.getConstructor(paramaterTypes);
         } catch (NoSuchMethodException ex) {

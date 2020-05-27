@@ -27,9 +27,8 @@ public class QueueRunnable implements Runnable {
 						new Title().sendActionBar(player, "§aFile d'attente : §e" + queues.getPosition(uuid) + "§a/§e" + queues.getPlayers().size());
 					}
 				}
-
-				ServersData serverData = LionSpigot.get().getServerDataManager().get(queues.getGame());
-
+				
+				ServersData serverData = queues.getServersData();				
 				UUID uuid = (UUID) queues.getPlayers().toArray()[0];
 				Player player = Bukkit.getPlayer(uuid);
 				if(player == null){
@@ -42,6 +41,10 @@ public class QueueRunnable implements Runnable {
 					int free = 0;
 					for (String str : LionSpigot.get().getServerManager().getServerGroup(queues.getGroup())) {
 						ServersData data = LionSpigot.get().getServerDataManager().get(str);
+						if(data == null) {
+							data = new ServersData(LionSpigot.get().getProjectName(), str, ServerStatus.WAITING, queues.getGroup());
+							LionSpigot.get().getServerDataManager().create(data);
+						}
 						if (data.getServerStatus() == ServerStatus.WAITING) {
 							free++;
 							queues.setServersData(data);
@@ -53,8 +56,8 @@ public class QueueRunnable implements Runnable {
 						}
 					}
 					if(free == 0) {
-						String name = LionSpigot.get().getServerManager().createAndGetServerName("Kaptur");
-						LionSpigot.get().getServerDataManager().create(new ServersData("LionUhc", name, ServerStatus.WAITING, queues.getGroup()));
+						String name = LionSpigot.get().getServerManager().createAndGetServerName(queues.getGroup());
+						LionSpigot.get().getServerDataManager().create(new ServersData(LionSpigot.get().getProjectName(), name, ServerStatus.WAITING, queues.getGroup()));
 					}
 				}
 				if(queues.getServersData() == null) continue;

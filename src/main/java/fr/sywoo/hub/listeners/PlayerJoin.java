@@ -34,6 +34,7 @@ public class PlayerJoin implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent event){
         Player player = event.getPlayer();
+        event.setJoinMessage(null);
         new TabManager().reloadTab();
         AccountData accountData = LionSpigot.get().getAccountManager().get(player.getUniqueId());
         hub.getClassement().getHolograms().display(player);
@@ -44,6 +45,11 @@ public class PlayerJoin implements Listener {
                     player.getName(),
                     new Rank(RankEnum.JOUEUR)));
         }
+        
+        if(accountData.getRank().hasPermission("hub.join")) {
+        	event.setJoinMessage(accountData.getPrefix() + player.getName() + " §aA rejoint le Hub !");
+        }
+        
         new BukkitRunnable() {
 
             @Override
@@ -51,7 +57,7 @@ public class PlayerJoin implements Listener {
                 hub.getHologramsList().getHolograms().stream().forEach(holograms -> holograms.display(player));
                 player.getInventory().clear();
                 player.updateInventory();
-                player.teleport(new Location(player.getWorld(), 0.5, 153, 0.5));
+                player.teleport(new Location(player.getWorld(), 0.5, 64, 0.5));
                 player.getInventory().setItem(4, new GameSelectorItem().toItemStack());
                 player.getInventory().setItem(8, new LobbySelectorItem().toItemStack());
                 player.getInventory().setItem(0, new ShopItem().toItemStack());
@@ -60,11 +66,11 @@ public class PlayerJoin implements Listener {
                 player.setWalkSpeed(0.3F);
                 player.setGameMode(GameMode.ADVENTURE);
                 hub.getScoreboardManager().onLogin(player);
+                player.setAllowFlight(true);
                 //new KapturGame(player);
                 //new SkywarsGame(player);
                                 
                 if (accountData.getRank().hasPermission("lionuhc.lobby.fly")) {
-                    player.setAllowFlight(true);
                     player.setFlying(true);
                 }
                 if(accountData.getLastServer() != null) {

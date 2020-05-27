@@ -1,9 +1,9 @@
 package fr.sywoo.hub.scoreboard;
 
+import java.util.HashMap;
+
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
-
-import java.util.HashMap;
 
 /*
  * This file is part of SamaGamesAPI.
@@ -101,17 +101,6 @@ public class ObjectiveSign extends VObjective {
             this.displayTo(op.getPlayer(), this.location.getLocation());
 
             RawObjective.removeObjective(op.getPlayer(), old);
-        });
-    }
-
-    private void replaceScore(VScore remove, VScore add)
-    {
-        this.scores.remove(remove);
-
-        this.receivers.stream().filter(OfflinePlayer::isOnline).forEach(op ->
-        {
-            RawObjective.updateScoreObjective(op.getPlayer(), this, add);
-            RawObjective.removeScoreObjective(op.getPlayer(), this, remove);
         });
     }
 }

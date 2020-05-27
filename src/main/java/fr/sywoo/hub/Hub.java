@@ -10,7 +10,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import fr.sywoo.api.spigot.LionSpigot;
 import fr.sywoo.api.utils.ChatManager;
-import fr.sywoo.hub.animas.AnimArena;
 import fr.sywoo.hub.enums.Games;
 import fr.sywoo.hub.scoreboard.ScoreboardManager;
 import fr.sywoo.hub.task.QueueRunnable;
@@ -55,7 +54,7 @@ public class Hub extends JavaPlugin {
 
         Bukkit.getScheduler().runTaskTimer(this, new QueueRunnable(), 0, 10);
         classement = new Classement(new Location(68, 20, -63).getAsLocation(), "§dClassement du jump", LionSpigot.get().getAccountManager().getJumpers());
-        new AnimArena();
+        //new AnimArena();
     }
 
     @Override

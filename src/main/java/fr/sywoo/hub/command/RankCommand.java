@@ -1,6 +1,5 @@
 package fr.sywoo.hub.command;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -19,9 +18,8 @@ public class RankCommand implements CommandExecutor{
 			 Player player = (Player) sender;
 		        if(LionSpigot.get().getAccountManager().get(player.getUniqueId()).getRank().hasPermission("lionuhc.rank")){
 		            if(args.length == 1){
-		                Player target = Bukkit.getPlayer(args[0]);
-		                if(target != null){
-		                    new RankMenu(target, Hub.instance).open(player);
+		                if(args[0] != null){
+		                    new RankMenu(args[0], Hub.instance).open(player);
 		                } else {
 		                    player.sendMessage(ChatColor.RED + "Erreur : Précise un joueur valide");
 		                }

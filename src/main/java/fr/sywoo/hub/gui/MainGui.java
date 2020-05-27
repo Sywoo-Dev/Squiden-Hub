@@ -1,5 +1,6 @@
 package fr.sywoo.hub.gui;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -41,7 +42,7 @@ public class MainGui extends IQuickInventory {
 		hub.getPlayerUtils();
 
 		for(Games games : Games.values()) {
-			List<String> lores = Arrays.asList(games.getDescription());
+			List<String> lores = new ArrayList<String>(Arrays.asList(games.getDescription()));
 			lores.add("§2");
 			lores.add("§bJoueurs en jeux §f: §c" + PlayerUtils.getGamePlayer(games.getGroup()));
 			lores.add("§3");
@@ -59,7 +60,7 @@ public class MainGui extends IQuickInventory {
 							if(!Hub.instance.maintaining.contains(games)) {
 								if(LionSpigot.get().getServerManager().getServerGroup(games.getGroup()).size() == 0) {
 									String name = LionSpigot.get().getServerManager().createAndGetServerName(games.getGroup());
-									LionSpigot.get().getServerDataManager().create(new ServersData("LionUhc", name, ServerStatus.WAITING, games.name()));
+									LionSpigot.get().getServerDataManager().create(new ServersData(LionSpigot.get().getProjectName(), name, ServerStatus.WAITING, games.name()));
 									onClick.getPlayer().sendMessage("§a§lUn Serveur est en cours de lancement...");
 								}
 								if(!Queue.existFor(games.getGroup())) {

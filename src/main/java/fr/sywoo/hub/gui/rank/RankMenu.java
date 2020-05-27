@@ -2,24 +2,22 @@ package fr.sywoo.hub.gui.rank;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.entity.Player;
 
 import fr.sywoo.api.inventory.IQuickInventory;
 import fr.sywoo.api.inventory.QuickInventory;
 import fr.sywoo.api.item.QuickItem;
 import fr.sywoo.api.rank.Rank;
 import fr.sywoo.api.rank.RankEnum;
+import fr.sywoo.api.spigot.LionSpigot;
 import fr.sywoo.hub.Hub;
 
 public class RankMenu extends IQuickInventory {
 
-	private Player target;
-	private Hub hub;
+	private String target;
 
-	public RankMenu(Player target, Hub hub) {
-		super("§cGrade : " + target.getName(), 9*2);
+	public RankMenu(String target, Hub hub) {
+		super("§cGrade : " + target, 9*2);
 		this.target = target;
-		this.hub = hub;
 	}
 
 	@Override
@@ -30,8 +28,10 @@ public class RankMenu extends IQuickInventory {
 							ChatColor.GRAY + "Power : " + rankEnum.getPower()).toItemStack(), quickEvent -> {
 								Rank rank = new Rank(rankEnum);
 								rank.addTPermission(rankEnum.getPermissions());
-								new AcceptCreateRank(rank, target, hub, rankEnum).open(quickInventory.getOwner());
+								new AcceptCreateRank(rank, target.toLowerCase(), rankEnum).open(quickInventory.getOwner());
 							});
 		}
+		
+		quickInventory.setItem(new QuickItem(Material.PAPER).setName(target).setLore("Grade actuel : " + LionSpigot.get().getAccountManager().get(target).getRank().getName()).toItemStack(), 17);
 	}
 }
