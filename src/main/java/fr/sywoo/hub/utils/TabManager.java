@@ -24,7 +24,7 @@ public class TabManager {
             if(accountData.getRank().hasPermission("*")){
                 TeamsTagsManager.setNameTag(player, teamname, nickname, " §a✔");
             }else if(accountData.isHost()){
-                TeamsTagsManager.setNameTag(player, teamname, nickname, " §e★");
+                TeamsTagsManager.setNameTag(player, teamname, nickname, " §e✯");
             }else {
                 TeamsTagsManager.setNameTag(player, teamname, nickname, "");
             }

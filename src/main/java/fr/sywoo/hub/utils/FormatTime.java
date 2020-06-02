@@ -1,64 +1,259 @@
 package fr.sywoo.hub.utils;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
+
 public class FormatTime {
+	
+	private int sec, min, hour, day, month;
+	
+	public FormatTime(int seconds) {
+		for(long i = 0; i < seconds; i++) {
+			sec++;
+			if(sec == 60) {
+				sec = 0;
+				min++;
+			}
+			if(min == 60) {
+				hour++;
+				min = 0;
+			}
+			if(hour == 24) {
+				day++;
+				hour = 0;
+			}
+			if(day == 30) {
+				month++;
+				day = 0;
+			}
+		}
+	}
+	
+	public FormatTime(long seconds) {
+		for(long i = 0; i < seconds; i++) {
+			sec++;
+			if(sec == 60) {
+				sec = 0;
+				min++;
+			}
+			if(min == 60) {
+				hour++;
+				min = 0;
+			}
+			if(hour == 24) {
+				day++;
+				hour = 0;
+			}
+			if(day == 30) {
+				month++;
+				day = 0;
+			}
+		}
+	}
+	
+	
+	public FormatTime(Date date) {
+		if(date == null) {
+			sec = 0;
+			min = 0;
+			hour = 0;
+			day = 0;
+			return;
+		}
+		LocalDateTime d = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+		Duration period = Duration.between(new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime(), d);
+		System.out.println("Period = " + period.getSeconds());
+		for(long i = 0; i < period.getSeconds(); i++) {
+			sec++;
+			if(sec == 60) {
+				sec = 0;
+				min++;
+			}
+			if(min == 60) {
+				hour++;
+				min = 0;
+			}
+			if(hour == 24) {
+				day++;
+				hour = 0;
+			}
+			if(day == 30) {
+				month++;
+				day = 0;
+			}
+		}
+		
+	}
+	
+	public FormatTime(Date date, Date date2) {
+		if(date == null) {
+			sec = 0;
+			min = 0;
+			hour = 0;
+			day = 0;
+			return;
+		}
+		LocalDateTime d = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+		Duration period = Duration.between(date2.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime(), d);
+		System.out.println("Period = " + period.getSeconds());
+		for(long i = 0; i < period.getSeconds(); i++) {
+			sec++;
+			if(sec == 60) {
+				sec = 0;
+				min++;
+			}
+			if(min == 60) {
+				hour++;
+				min = 0;
+			}
+			if(hour == 24) {
+				day++;
+				hour = 0;
+			}
+			if(day == 30) {
+				month++;
+				day = 0;
+			}
+		}
+		
+	}
+	
+	public FormatTime(int min, int sec) {
+		this.sec = sec;
+		this.min = min;
+	}
+	
+	public String toString() {
+		String output = "";
+		
+		if(month >= 1) { output += format(month) + ":"; }
+		if(day >= 1) { output += format(day) + ":"; }
+		if(hour >= 1) { output += format(hour) + ":"; }
 
-    private int sec;
-    private int min;
-    private int hour;
+		output += format(min) + ":";
+		output += format(sec);
 
-    public FormatTime(int seconds) {
-        this.sec = seconds % 60;
-        int hour = seconds / 60;
-        this.min = hour % 60;
-        this.hour = hour/60;
-    }
+		return output;
+	}
+	
+	public String toMDString() {
+		String output = "";
+		
+		if(month >= 1) { output += format(month) + " Mois "; }
+		if(day >= 1) { output += format(day) + " Jour(s) "; }
 
-    public FormatTime(int min, int sec) {
-        this.sec = sec;
-        this.min = min;
-    }
+		if(min == 0 && sec == 0 && day == 0 && month == 0) {
+			return "Jamais";
+		}
+		
+		return output;
+	}
+	
+	public String toCutString() {
+		String output = "";
+		
+		int totalHour = hour;
+		
+		day += month*30;
+		totalHour += day*24;
+		
+		output = format(totalHour) + "h" + format(min) + "min";
+		return output;
+	}
+	
+	public String toMSString() {
+		String output = "";
+		
+		if(min >= 1) { output += format(day) + " Minute(s) "; }
+		if(sec >= 1) { output += format(hour) + "Seconde(s) "; }
 
-    public String toString() {
-        String s_min = String.valueOf(min);
-        if(min < 10) {
-            s_min = "0" + String.valueOf(min);
-        }
-        String s_sec = String.valueOf(sec);
-        if(sec < 10) {
-            s_sec = "0" + String.valueOf(sec);
-        }
-        String s_hour = String.valueOf(hour);
-        if(hour < 10){
-            s_hour = "0" + String.valueOf(hour);
-        }
-        return s_hour + ":" +  s_min + ":" + s_sec;
-    }
+		if(min == 0 && sec == 0 && day == 0 && month == 0) {
+			return "Jamais";
+		}
+		
+		return output;	
+	}
+	
+	public String toMDHString() {
+		String output = "";
+		
+		if(month >= 1) { output += format(month) + " Mois "; }
+		if(day >= 1) { output += format(day) + " Jour(s) "; }
+		if(hour >= 1) { output += format(hour) + "Heure(s) "; }
 
-    public int getHour() {
-        return hour;
-    }
+		if(min == 0 && sec == 0 && day == 0 && month == 0) {
+			return "Jamais";
+		}
+		
+		return output;
+	}
+	
+	public String toFormatString() {
+		String output = "";
+		
+		if(month >= 1) { output += format(month) + " Mois "; }
+		if(day >= 1) { output += format(day) + " Jour(s) "; }
+		if(hour >= 1) { output += format(hour) + "Heure(s) "; }
 
-    public int getMin() {
-        return min;
-    }
+		output += format(min) + " Minute(s) et ";
+		output += format(sec) + " Seconde(s)";
 
-    public int getSec() {
-        return sec;
-    }
+		if(min == 0 && sec == 0 && day == 0 && month == 0) {
+			return "Jamais";
+		}
+		
+		return output;
+	}
+	
+	private String format(int in) {
+		String out = String.valueOf(in);
+		if(in < 10) {
+			out = "0" + String.valueOf(in);
+		}
+		
+		return out;
+	}
 
-    public FormatTime setHour(int hour) {
-        this.hour = hour;
-        return this;
-    }
+	public int getHour() {
+		return hour;
+	}
 
-    public FormatTime setMin(int min) {
-        this.min = min;
-        return this;
-    }
+	public void setHour(int hour) {
+		this.hour = hour;
+	}
 
-    public FormatTime setSec(int sec) {
-        this.sec = sec;
-        return this;
-    }
+	public int getMin() {
+		return min;
+	}
 
+	public void setMin(int min) {
+		this.min = min;
+	}
+
+	public int getSec() {
+		return sec;
+	}
+
+	public void setSec(int sec) {
+		this.sec = sec;
+	}
+
+	public int getMonth() {
+		return month;
+	}
+
+	public void setMonth(int month) {
+		this.month = month;
+	}
+
+	public int getDay() {
+		return day;
+	}
+
+	public void setDay(int day) {
+		this.day = day;
+	}
+	
 }

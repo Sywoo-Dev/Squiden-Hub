@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import fr.sywoo.api.account.AccountData;
 import fr.sywoo.api.rank.Rank;
 import fr.sywoo.api.spigot.LionSpigot;
+import fr.sywoo.hub.utils.MathsUtils;
 
 public class PersonalScoreboard {
 
@@ -31,8 +32,8 @@ public class PersonalScoreboard {
         objectiveSign.setLine(0, "§2");
         objectiveSign.setLine(1, "§7»    §6Compte");
         objectiveSign.setLine(2, "§7» §6Grade : " + rank.getName());
-        objectiveSign.setLine(3, "§7» §e⛃  " + data.getCoins());
-        objectiveSign.setLine(4, "§7» §b🦑 " + data.getShiShi());
+        objectiveSign.setLine(3, "§7» §e⛃ " + new MathsUtils().format(data.getCoins()));
+        objectiveSign.setLine(4, "§7» §b⛃ " + new MathsUtils().format(data.getSquids()));
         objectiveSign.setLine(5, "§7");
         objectiveSign.setLine(6, "§7»    §2Guilde");
         objectiveSign.setLine(7, "§7» §aGuilde : " + data.getGuildsName());

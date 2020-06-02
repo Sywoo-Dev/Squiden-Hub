@@ -11,7 +11,7 @@ import fr.sywoo.hub.player.JumpPlayer;
 public class JumpLeaveItem extends QuickItem{
 
 	public JumpLeaveItem() {
-		super(Material.SLIME_BALL);
+		super(Material.REDSTONE);
 		setName("§c§lQuitter le Jump").setAction(action -> {
 			Player player = action.getPlayer();
             if(JumpPlayer.getInfos(player) == null) { player.sendMessage("§lJump §l» §cTu n'es pas dans le jump"); return; }
@@ -23,10 +23,10 @@ public class JumpLeaveItem extends QuickItem{
             player.getInventory().setItem(0, new ShopItem().toItemStack());
             JumpPlayer.getInfos(player).stop();
             JumpPlayer.delete(player);
-            player.teleport(new Location(player.getWorld(), 0.5, 16.0, 0.5));
+            player.teleport(new Location(player.getWorld(), 0.5, 64, 0.5));
             player.setWalkSpeed(0.3F);
+            player.setAllowFlight(true);
             if (LionSpigot.get().getAccountManager().get(player.getUniqueId()).getRank().hasPermission("lionuhc.lobby.fly")) {
-                player.setAllowFlight(true);
                 player.setFlying(true);
             }
             player.sendMessage("§lJump §l» §cVous avez quitté le jump.");

@@ -11,6 +11,7 @@ import org.bukkit.inventory.ItemStack;
 import de.dytanic.cloudnet.driver.CloudNetDriver;
 import de.dytanic.cloudnet.driver.service.ServiceInfoSnapshot;
 import de.dytanic.cloudnet.ext.bridge.ServiceInfoSnapshotUtil;
+import fr.sywoo.api.account.AccountData;
 import fr.sywoo.api.inventory.IQuickInventory;
 import fr.sywoo.api.inventory.QuickInventory;
 import fr.sywoo.api.item.QuickItem;
@@ -25,7 +26,7 @@ import fr.sywoo.hub.utils.PlayerUtils;
 public class LgGUI extends IQuickInventory {
 
 	public LgGUI() {
-		super("§aChoisis un serveur LG", 9*5);
+		super("§aLoup-Garou UHC", 9*5);
 	}
 
 	@SuppressWarnings("deprecation")
@@ -89,8 +90,9 @@ public class LgGUI extends IQuickInventory {
 			LionSpigot.get().getPlayerServerManager().sendPlayerToServer(player.getUniqueId(), queue.getServersData().getName());
 			return;
 		}
-		if(queue.getPlayers().contains(player.getUniqueId())){
-			queue.removePlayer(player.getUniqueId());
+		AccountData data = LionSpigot.get().getAccountManager().get(player.getUniqueId());
+		if(queue.getPlayers().contains(data.getRank().getPower() + player.getUniqueId())){
+			queue.removePlayer(player);
 
 			player.playSound(player.getLocation(), Sound.VILLAGER_YES, 1, 1);
 			player.sendMessage("§7§m-----------------------------------------------------");
@@ -99,12 +101,12 @@ public class LgGUI extends IQuickInventory {
 			return;
 		}
 
-		queue.addPlayer(player.getUniqueId());
+		queue.addPlayer(data.getRank().getPower() + player.getUniqueId());
 
 		player.playSound(player.getLocation(), Sound.LEVEL_UP, 1, 1);
 		player.sendMessage("§7§m-----------------------------------------------------");
 		player.sendMessage("§aVous avez été ajouté à la file d'attente pour ce jeu !");
-		player.sendMessage("§eVous êtes à la position : §6" + queue.getPosition(player.getUniqueId()) + "§e/§6" + queue.getPlayers().size());
+		player.sendMessage("§eVous êtes à la position : §6" + queue.getPosition(data.getRank().getPower() + player.getUniqueId()) + "§e/§6" + queue.getPlayers().size());
 		player.sendMessage("§7§m-----------------------------------------------------");
 	}
 

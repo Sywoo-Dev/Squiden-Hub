@@ -61,7 +61,7 @@ public class KapturGame {
         try {
         URL url_0 = new URL("https://api.mojang.com/users/profiles/minecraft/" + name);
         InputStreamReader reader_0 = new InputStreamReader(url_0.openStream());
-     
+        
         String uuid = new JsonParser().parse(reader_0).getAsJsonObject().get("id").getAsString();
         URL url_1 = new URL("https://sessionserver.mojang.com/session/minecraft/profile/" + uuid + "?unsigned=false");
         InputStreamReader reader_1 = new InputStreamReader(url_1.openStream());

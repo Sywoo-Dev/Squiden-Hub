@@ -12,7 +12,7 @@ import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerInteractEntityEvent;
+import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -45,7 +45,10 @@ public abstract class Animatronic implements Listener{
 	}
 	
 	@EventHandler
-	public void onInteract(PlayerInteractEntityEvent event) {
+	public void onInteract(PlayerInteractAtEntityEvent event) {
+		if(event.getRightClicked() == null) return;
+		if(event.getRightClicked().getCustomName() == null) return;
+		if(!(event.getRightClicked().getEntityId() == stand.getEntityId())) return;
 		onClick(event);
 	}
 	
@@ -224,7 +227,7 @@ public abstract class Animatronic implements Listener{
 	}
 
 	public abstract void executeAction();
-	public abstract void onClick(PlayerInteractEntityEvent event);
+	public abstract void onClick(PlayerInteractAtEntityEvent event);
 
 	public boolean isBlinking() {
 		return blinking;

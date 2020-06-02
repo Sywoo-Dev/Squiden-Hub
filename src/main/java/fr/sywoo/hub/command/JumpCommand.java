@@ -15,7 +15,7 @@ public class JumpCommand implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command arg1, String arg2, String[] arg3) {
         Player player = (Player) sender;
         if(JumpPlayer.getInfos(player) == null){
-            player.teleport(new Location(Bukkit.getWorld("world"), 63.5, 16.0, -58.5, -90, 0));
+            player.teleport(new Location(Bukkit.getWorld("world"), -111.5, 149.2, -53.5, -140, 0));
             player.playSound(player.getLocation(), Sound.LEVEL_UP, 10, 10);
         }		return false;
 	}

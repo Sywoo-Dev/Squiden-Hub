@@ -73,15 +73,15 @@ public class ScoreboardManager {
 
         if (ipCharIndex > 0) {
             formattedIp.append(ip.substring(0, ipCharIndex - 1));
-            formattedIp.append(ChatColor.GOLD).append(ip.substring(ipCharIndex - 1, ipCharIndex));
+            formattedIp.append(ChatColor.DARK_AQUA).append(ip.substring(ipCharIndex - 1, ipCharIndex));
         } else {
             formattedIp.append(ip.substring(0, ipCharIndex));
         }
 
-        formattedIp.append(ChatColor.RED).append(ip.charAt(ipCharIndex));
+        formattedIp.append(ChatColor.AQUA).append(ip.charAt(ipCharIndex));
 
         if (ipCharIndex + 1 < ip.length()) {
-            formattedIp.append(ChatColor.GOLD).append(ip.charAt(ipCharIndex + 1));
+            formattedIp.append(ChatColor.DARK_AQUA).append(ip.charAt(ipCharIndex + 1));
 
             if (ipCharIndex + 2 < ip.length())
                 formattedIp.append(ChatColor.WHITE).append(ip.substring(ipCharIndex + 2));

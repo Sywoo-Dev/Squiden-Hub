@@ -6,19 +6,21 @@ import java.util.Date;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 
-import fr.sywoo.api.item.QuickItem;
 import fr.sywoo.api.sanction.BanData;
 import fr.sywoo.api.spigot.LionSpigot;
 import fr.sywoo.hub.Hub;
+import fr.sywoo.hub.items.GameSelectorItem;
+import fr.sywoo.hub.items.GuildItem;
 import fr.sywoo.hub.items.JumpCheckpointItem;
 import fr.sywoo.hub.items.JumpLeaveItem;
+import fr.sywoo.hub.items.LobbySelectorItem;
+import fr.sywoo.hub.items.ShopItem;
 import fr.sywoo.hub.jump.CheckPoint;
 import fr.sywoo.hub.player.JumpPlayer;
 import fr.sywoo.hub.utils.FormatTime;
@@ -34,8 +36,7 @@ public class Jump implements Listener {
     @EventHandler
     public void onMove(PlayerMoveEvent event){
         Player player = event.getPlayer();
-        Location location = new Location(player.getWorld(), player.getLocation().getX(), (player.getLocation().getY() - 1), player.getLocation().getZ());
-
+        
         for(CheckPoint checkPoint : CheckPoint.values()){
             if(checkPoint.getCuboid().contains(player)){
                 if(JumpPlayer.getInfos(player) == null && checkPoint == CheckPoint.START) {
@@ -86,24 +87,25 @@ public class Jump implements Listener {
                     }
                     player.setWalkSpeed(0.3F);
                     player.sendMessage(checkPoint.getMessage().replace("<time>", new FormatTime(JumpPlayer.getInfos(player).getSec()).toString()));
-                    player.sendMessage("§lJump §l» §2Téléportation au spawn dans 15 secondes....");
+                    player.sendMessage("§lJump §l» §2Téléportation au spawn dans 5 secondes....");
                     JumpPlayer.delete(player);
                     Bukkit.getScheduler().scheduleSyncDelayedTask(hub, new Runnable() {
                         @Override
                         public void run() {
-                            player.teleport(new Location(player.getWorld(), 63.5, 16.0, -58.5, -90, 0));
+                            player.teleport(new Location(Bukkit.getWorld("world"), -111.5, 149.2, -53.5, -140, 0));
                             player.getInventory().clear();
                             player.updateInventory();
-                            player.getInventory().setItem(4,new QuickItem(Material.COMPASS).setName("§5Séléction des modes de jeux").setLore("§fChoisissez votre destination").toItemStack());
-                            player.getInventory().setItem(8, new QuickItem(Material.BEACON).setName("§aSélécteur de lobby").toItemStack());
-                            player.getInventory().setItem(0, new QuickItem(Material.GOLD_INGOT).setName("§eBoutique").toItemStack());
+                    		player.getInventory().setItem(4, new GameSelectorItem().toItemStack());
+                    		player.getInventory().setItem(8, new LobbySelectorItem().toItemStack());
+                    		player.getInventory().setItem(0, new ShopItem().toItemStack());
+                    		player.getInventory().setItem(7, new GuildItem().toItemStack());
                             player.setGameMode(GameMode.ADVENTURE);
                             if (LionSpigot.get().getAccountManager().get(player.getUniqueId()).getRank().hasPermission("lionuhc.lobby.fly")) {
                                 player.setAllowFlight(true);
                                 player.setFlying(true);
                             }
                         }
-                    }, 20*15);
+                    }, 20*5);
                     return;
                 }
                 if(JumpPlayer.getInfos(player) == null) return;
@@ -114,14 +116,7 @@ public class Jump implements Listener {
                 player.playSound(player.getLocation(), Sound.LEVEL_UP, 10, 10);
             }
         }
-        if(location.getBlock().getType() == Material.GOLD_BLOCK) return;
-        if((location.getBlock().getType() == Material.AIR)
-                || (location.getBlock().getType() == Material.STAINED_GLASS)
-                || (location.getBlock().getType() == Material.STEP)
-                || (location.getBlock().getType() == Material.SLIME_BLOCK)
-                || (location.getBlock().getType() == Material.SMOOTH_STAIRS) && JumpPlayer.getInfos(player) != null) {
-            return;
-        } else {
+        if(event.getTo().getY() < 130){
             if(JumpPlayer.getInfos(player) == null) return;
             CheckPoint checkPoint = JumpPlayer.getInfos(player).getCheckPoint();
             player.teleport(JumpPlayer.getInfos(player).getCheckPoint().getCuboid().getPCenter().setYaw(checkPoint.getYaw()).setPitch(checkPoint.getPitch()).getAsLocation());

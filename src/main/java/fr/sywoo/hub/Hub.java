@@ -1,15 +1,32 @@
 package fr.sywoo.hub;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.WorldCreator;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import fr.sywoo.api.spigot.LionSpigot;
 import fr.sywoo.api.utils.ChatManager;
+import fr.sywoo.hub.animas.AnimClassicMeetup;
+import fr.sywoo.hub.animas.AnimGolemRush;
+import fr.sywoo.hub.animas.AnimHikaBrain;
+import fr.sywoo.hub.animas.AnimKaptur;
+import fr.sywoo.hub.animas.AnimLG;
+import fr.sywoo.hub.animas.AnimSkyWars;
+import fr.sywoo.hub.animas.AnimTaupe;
+import fr.sywoo.hub.animas.AnimUHCRun;
+import fr.sywoo.hub.customes.HubChampiMeuh;
+import fr.sywoo.hub.customes.HubEnderman;
+import fr.sywoo.hub.customes.HubSheep;
+import fr.sywoo.hub.customes.HubSnowMan;
 import fr.sywoo.hub.enums.Games;
 import fr.sywoo.hub.scoreboard.ScoreboardManager;
 import fr.sywoo.hub.task.QueueRunnable;
@@ -27,13 +44,16 @@ public class Hub extends JavaPlugin {
     private Classement classement;
     private PlayerUtils playerUtils;
     private HologramsList hologramsList;
-
+    
+    public List<Integer> customs = new ArrayList<>();
     public static Hub instance;
     
     public ArrayList<Games> maintaining = new ArrayList<Games>();
     
+    public Map<UUID, Integer> jumps = new HashMap<>();
+    
 	private ChatManager chat;
-	
+		
 	public ChatManager getChat() {
 		return chat;
 	}
@@ -54,7 +74,25 @@ public class Hub extends JavaPlugin {
 
         Bukkit.getScheduler().runTaskTimer(this, new QueueRunnable(), 0, 10);
         classement = new Classement(new Location(68, 20, -63).getAsLocation(), "§dClassement du jump", LionSpigot.get().getAccountManager().getJumpers());
-        //new AnimArena();
+        new Location(-86.5, 64, 38.5).getAsLocation().getBlock().setType(Material.DRAGON_EGG);
+        
+        // BARRIER : new AnimArena();
+        new AnimHikaBrain();
+        new AnimKaptur();
+        
+        new AnimClassicMeetup();
+        new AnimLG();
+        new AnimTaupe();
+        
+        new AnimUHCRun();
+        new AnimSkyWars();
+        //BARRIER : new AnimSlasher();
+        new AnimGolemRush();
+        
+        new HubSnowMan();
+        new HubChampiMeuh();
+        new HubSheep();
+        new HubEnderman();
     }
 
     @Override

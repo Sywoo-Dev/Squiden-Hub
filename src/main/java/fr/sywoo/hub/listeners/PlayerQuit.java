@@ -21,12 +21,12 @@ public class PlayerQuit implements Listener {
     @EventHandler
     public void onQuit(PlayerQuitEvent event){
         Player player = event.getPlayer();
+        event.setQuitMessage(null);
         if(Queue.playerInQueue(player)){
             if(Queue.getPlayerQueue(player).getPlayers() == null) return;
-            Queue.getPlayerQueue(player).getPlayers().remove(player.getUniqueId());
+            Queue.getPlayerQueue(player).getPlayers().remove(LionSpigot.get().getAccountManager().get(player.getUniqueId()).getRank().getPower() + player.getUniqueId());
         }
                 
-        event.setQuitMessage("§7[§c-§7] " + player.getName());
         hub.getScoreboardManager().onLogout(player);
         hub.getHologramsList().getHolograms().forEach(holograms -> holograms.destroy(player));
         if(ServerPlayerGui.getPlayerStartedServer().containsKey(player.getUniqueId())){

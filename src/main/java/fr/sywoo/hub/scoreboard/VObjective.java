@@ -1,15 +1,16 @@
 package fr.sywoo.hub.scoreboard;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ConcurrentLinkedQueue;
+
+import org.bukkit.OfflinePlayer;
+import org.bukkit.entity.Player;
+
 import net.minecraft.server.v1_8_R3.IScoreboardCriteria;
 import net.minecraft.server.v1_8_R3.PacketPlayOutScoreboardDisplayObjective;
 import net.minecraft.server.v1_8_R3.PacketPlayOutScoreboardObjective;
 import net.minecraft.server.v1_8_R3.PacketPlayOutScoreboardScore;
-import org.bukkit.OfflinePlayer;
-import org.bukkit.entity.Player;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class VObjective {
     protected String name;

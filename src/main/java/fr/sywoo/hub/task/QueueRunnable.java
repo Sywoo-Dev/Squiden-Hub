@@ -21,16 +21,16 @@ public class QueueRunnable implements Runnable {
 		for(Queue queues : LionSpigot.get().getQueues().values()){
 			if(queues.getPlayers().size() > 0) {
 
-				for(UUID uuid : queues.getPlayers()){
-					Player player = Bukkit.getPlayer(uuid);
+				for(String uuid : queues.getPlayers()){
+					Player player = Bukkit.getPlayer(UUID.fromString(uuid.replaceFirst(uuid.charAt(0)+"", "")));
 					if(player != null) {
 						new Title().sendActionBar(player, "§aFile d'attente : §e" + queues.getPosition(uuid) + "§a/§e" + queues.getPlayers().size());
 					}
 				}
 				
 				ServersData serverData = queues.getServersData();				
-				UUID uuid = (UUID) queues.getPlayers().toArray()[0];
-				Player player = Bukkit.getPlayer(uuid);
+				String uuid = (String) queues.getPlayers().toArray()[0];
+				Player player = Bukkit.getPlayer(UUID.fromString(uuid.replaceFirst(uuid.charAt(0)+"", "")));
 				if(player == null){
 					queues.getPlayers().remove(null);
 					queues.getPlayers().remove(uuid);
@@ -66,18 +66,18 @@ public class QueueRunnable implements Runnable {
 					UHCData data = serverData.getUhcData();
 					System.out.println("Queue: " + queues.getGame()  + " " + data.isWhitelist());
 					if(data.isWhitelist()) {
-						if(LionSpigot.get().getAccountManager().get(uuid).getRank().hasPermission("moderation.tool")
-								|| LionSpigot.get().getAccountManager().get(uuid).getRank().hasPermission("queue.priority")
+						if(LionSpigot.get().getAccountManager().get(player.getUniqueId()).getRank().hasPermission("moderation.tool")
+								|| LionSpigot.get().getAccountManager().get(player.getUniqueId()).getRank().hasPermission("queue.priority")
 								|| serverData.getOwner().equalsIgnoreCase(player.getName())
-								|| data.getWhitelisted().contains(uuid)){
-							queues.removePlayer(player.getUniqueId());
+								|| data.getWhitelisted().contains(player.getUniqueId())){
+							queues.removePlayer(player);
 							player.playSound(player.getLocation(), Sound.VILLAGER_YES, 1, 1);
 							player.sendMessage("§7§m-----------------------------------------------------");
 							player.sendMessage("§aVotre serveur s'est lancé !");
 							player.sendMessage("§bTéléportation...");
 							player.sendMessage("§cPassage outre de la file d'attente");
 							player.sendMessage("§7§m-----------------------------------------------------");
-							LionSpigot.get().getPlayerServerManager().sendPlayerToServer(uuid, queues.getServersData().getName());
+							LionSpigot.get().getPlayerServerManager().sendPlayerToServer(player, queues.getServersData().getName());
 						}
 					} else {
 						player.playSound(player.getLocation(), Sound.VILLAGER_YES, 1, 1);
@@ -85,8 +85,8 @@ public class QueueRunnable implements Runnable {
 						player.sendMessage("§aVotre serveur s'est lancé !");
 						player.sendMessage("§bTéléportation...");
 						player.sendMessage("§7§m-----------------------------------------------------");
-						queues.removePlayer(player.getUniqueId());
-						LionSpigot.get().getPlayerServerManager().sendPlayerToServer(uuid, queues.getServersData().getName());
+						queues.removePlayer(player);
+						LionSpigot.get().getPlayerServerManager().sendPlayerToServer(player, queues.getServersData().getName());
 					}
 				}
 			}

@@ -4,13 +4,13 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.event.player.PlayerInteractEntityEvent;
+import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class AnimArena extends Animatronic{
 	
 	public AnimArena() {
-		super(new Location(Bukkit.getWorld("world"), 0.5, 153, 0.5, 75, 0), "Test", ChatColor.DARK_RED, ChatColor.RED, 20);
+		super(new Location(Bukkit.getWorld("world"), 0.5, 153, 0.5, 75, 0), "Arena", ChatColor.DARK_RED, ChatColor.RED, 20);
 		//setWalking(true);
 		setSalute(true);
 		setStuff(new ItemStack(Material.LEATHER_HELMET), new ItemStack(Material.LEATHER_CHESTPLATE),
@@ -25,8 +25,8 @@ public class AnimArena extends Animatronic{
 	}
 
 	@Override
-	public void onClick(PlayerInteractEntityEvent event) {
-		System.out.println("Clicked " + getStand().getCustomName());
+	public void onClick(PlayerInteractAtEntityEvent event) {
+		
 	}
 
 }

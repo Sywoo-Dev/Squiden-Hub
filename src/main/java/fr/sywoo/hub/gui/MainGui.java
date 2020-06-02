@@ -10,6 +10,7 @@ import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
+import fr.sywoo.api.account.AccountData;
 import fr.sywoo.api.inventory.IQuickInventory;
 import fr.sywoo.api.inventory.QuickInventory;
 import fr.sywoo.api.item.QuickItem;
@@ -45,6 +46,7 @@ public class MainGui extends IQuickInventory {
 			List<String> lores = new ArrayList<String>(Arrays.asList(games.getDescription()));
 			lores.add("§2");
 			lores.add("§bJoueurs en jeux §f: §c" + PlayerUtils.getGamePlayer(games.getGroup()));
+			lores.add("§6Développeur : §e" + games.getDevelopper());
 			lores.add("§3");
 			if(Hub.instance.maintaining.contains(games)){
 				lores.add("§c» §6Jeu en Maintenance.");
@@ -58,6 +60,10 @@ public class MainGui extends IQuickInventory {
 							games.getInventory().open(onClick.getPlayer());
 						}else {
 							if(!Hub.instance.maintaining.contains(games)) {
+
+								if(Queue.getPlayerQueue(onClick.getPlayer()) != null) {
+									Queue.getPlayerQueue(onClick.getPlayer()).removePlayer(onClick.getPlayer());
+								}
 								if(LionSpigot.get().getServerManager().getServerGroup(games.getGroup()).size() == 0) {
 									String name = LionSpigot.get().getServerManager().createAndGetServerName(games.getGroup());
 									LionSpigot.get().getServerDataManager().create(new ServersData(LionSpigot.get().getProjectName(), name, ServerStatus.WAITING, games.name()));
@@ -66,7 +72,8 @@ public class MainGui extends IQuickInventory {
 								if(!Queue.existFor(games.getGroup())) {
 									new Queue(games.getGroup(), games.name(), games.getGroup());
 								}
-								Queue.getByName(games.getGroup()).addPlayer(onClick.getPlayer().getUniqueId());
+								AccountData data = LionSpigot.get().getAccountManager().get(onClick.getPlayer().getUniqueId());
+								Queue.getByName(games.getGroup()).addPlayer(data.getRank().getPower() + onClick.getPlayer().getUniqueId());
 								onClick.getPlayer().closeInventory();
 							}else {
 								onClick.getPlayer().sendMessage("§cCe jeu est en maintenance !");

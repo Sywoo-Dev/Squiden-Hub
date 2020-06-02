@@ -27,7 +27,7 @@ public class MessageTask extends BukkitRunnable {
 				player.sendMessage("");
 				player.spigot().sendMessage(new TextComponentBuilder("§7■ §fEnvie de devenir §e§lHOST§f?" +
 						"\n§b➤ N'hesitez plus et allez sur notre shop afin de trouver ce qu'il vous faut !")
-						.setClickEvent(ClickEvent.Action.OPEN_URL, "https://lionuhc.eu/shop").setHoverEvent(HoverEvent.Action.SHOW_TEXT, "§5BOUTIQUE").toText());
+						.setClickEvent(ClickEvent.Action.OPEN_URL, "https://squiden.fr/shop").setHoverEvent(HoverEvent.Action.SHOW_TEXT, "§5BOUTIQUE").toText());
 				player.sendMessage("");
 			}
 		} else if(min == 30){
