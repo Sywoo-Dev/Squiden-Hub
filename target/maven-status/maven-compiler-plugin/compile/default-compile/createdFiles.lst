@@ -10,7 +10,6 @@ fr\sywoo\hub\animas\AnimGolemRush.class
 fr\sywoo\hub\scoreboard\PersonalScoreboard.class
 fr\sywoo\hub\animas\Animatronic.class
 fr\sywoo\hub\gui\servers\ServerPlayerGui$1.class
-fr\sywoo\hub\utils\HologramsList.class
 fr\sywoo\hub\listeners\PlayerMove.class
 fr\sywoo\hub\scoreboard\ScoreboardManager.class
 fr\sywoo\hub\utils\Cuboid$1.class
@@ -46,6 +45,7 @@ fr\sywoo\hub\listeners\PlayerJoin$2.class
 fr\sywoo\hub\gui\servers\uhcs\TaupeGUI.class
 fr\sywoo\hub\animas\AnimSkyWars.class
 fr\sywoo\hub\gui\MainGui.class
+fr\sywoo\hub\Hub$1.class
 fr\sywoo\hub\utils\Classement.class
 fr\sywoo\hub\utils\Cuboid$CuboidDirection.class
 fr\sywoo\hub\listeners\CancelledEvents.class
@@ -59,8 +59,10 @@ fr\sywoo\hub\gui\settings\SettingsGui.class
 fr\sywoo\hub\listeners\PlayerQuit.class
 fr\sywoo\hub\items\GameSelectorItem.class
 fr\sywoo\hub\utils\QuickString.class
+fr\sywoo\hub\customes\HubCrystal.class
 fr\sywoo\hub\gui\servers\uhcs\ClassicGUI.class
 fr\sywoo\hub\command\JumpCommand.class
+fr\sywoo\hub\Hub$2.class
 fr\sywoo\hub\utils\TabManager.class
 fr\sywoo\hub\Hub.class
 fr\sywoo\hub\utils\CustomEntity.class

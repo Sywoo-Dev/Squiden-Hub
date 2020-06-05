@@ -52,6 +52,9 @@ public abstract class CustomEntity implements Listener{
 	
 	public abstract void clickEvent(PlayerInteractAtEntityEvent event);
 	
+	public void setInvisible() {
+		((CraftEntity) entity).getHandle().setInvisible(true);
+	}
 	
 	public void destroy() {
 		entity.teleport(entity.getLocation().add(0, -300, 0));

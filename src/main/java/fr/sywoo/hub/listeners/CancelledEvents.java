@@ -15,6 +15,7 @@ import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.hanging.HangingBreakByEntityEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.player.PlayerAchievementAwardedEvent;
 import org.bukkit.event.player.PlayerArmorStandManipulateEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerExpChangeEvent;
@@ -37,6 +38,11 @@ public class CancelledEvents implements Listener {
 		if (e.getPlayer().getGameMode() != GameMode.CREATIVE) {
 			e.setCancelled(true);
 		}
+	}
+	
+	@EventHandler
+	public void onSuccess(PlayerAchievementAwardedEvent event) {
+		event.setCancelled(true);
 	}
 	
 	@EventHandler

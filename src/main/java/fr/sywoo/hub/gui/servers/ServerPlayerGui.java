@@ -42,7 +42,7 @@ public class ServerPlayerGui extends IQuickInventory {
 		quickInventory.setVerticalLine(new QuickItem(Material.STAINED_GLASS_PANE).setName(" ").toItemStack(), 8, 35);
 
 		quickInventory.setItem(new QuickItem(Material.GOLDEN_APPLE).setName("§6UHC")
-				.setLore("", "§bLancez votre propre host UHC afin de profiter un", ChatColor.AQUA + "maximum des customisations de §6Lion§cUHC !", "").toItemStack(), quickEvent -> {
+				.setLore("", "§bLancez votre propre host UHC afin de profiter un", ChatColor.AQUA + "maximum des customisations de §3Squiden !", "").toItemStack(), quickEvent -> {
 					quickEvent.getPlayer().closeInventory();
 					if(playerStartedServer.containsKey(quickEvent.getPlayer().getUniqueId())){
 						quickEvent.getPlayer().playSound(quickEvent.getPlayer().getLocation(), Sound.ANVIL_BREAK, 10, 10);

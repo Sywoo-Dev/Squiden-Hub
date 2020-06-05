@@ -45,7 +45,8 @@ public class ClassicGUI extends IQuickInventory {
 			.forEach(serviceInfoSnapshot -> {
 				ServersData serverData = LionSpigot.get().getServerDataManager().get(serviceInfoSnapshot.getServiceId().getName());
 				UHCData data = serverData.getUhcData();
-				if(data.getType().equalsIgnoreCase(UhcType.MEETUP.name()) || data.getType().equalsIgnoreCase(UhcType.CLASSIC.name())) {
+
+				if(data.getUhcType() == UhcType.CLASSIC || data.getUhcType() == UhcType.MEETUP) {
 					List<String> lore = new ArrayList<>();
 					lore.add("§8§m---------------");
 					lore.add("§7§lHost §8» §b" + serverData.getOwner());

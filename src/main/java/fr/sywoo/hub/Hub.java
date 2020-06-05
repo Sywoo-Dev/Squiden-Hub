@@ -11,7 +11,9 @@ import java.util.concurrent.ScheduledExecutorService;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.WorldCreator;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import fr.sywoo.api.spigot.LionSpigot;
 import fr.sywoo.api.utils.ChatManager;
@@ -23,7 +25,9 @@ import fr.sywoo.hub.animas.AnimLG;
 import fr.sywoo.hub.animas.AnimSkyWars;
 import fr.sywoo.hub.animas.AnimTaupe;
 import fr.sywoo.hub.animas.AnimUHCRun;
+import fr.sywoo.hub.classements.HikabrainClassements;
 import fr.sywoo.hub.customes.HubChampiMeuh;
+import fr.sywoo.hub.customes.HubCrystal;
 import fr.sywoo.hub.customes.HubEnderman;
 import fr.sywoo.hub.customes.HubSheep;
 import fr.sywoo.hub.customes.HubSnowMan;
@@ -32,7 +36,6 @@ import fr.sywoo.hub.scoreboard.ScoreboardManager;
 import fr.sywoo.hub.task.QueueRunnable;
 import fr.sywoo.hub.utils.Classement;
 import fr.sywoo.hub.utils.EventManager;
-import fr.sywoo.hub.utils.HologramsList;
 import fr.sywoo.hub.utils.Location;
 import fr.sywoo.hub.utils.PlayerUtils;
 
@@ -43,7 +46,6 @@ public class Hub extends JavaPlugin {
     private ScheduledExecutorService scheduledExecutorService;
     private Classement classement;
     private PlayerUtils playerUtils;
-    private HologramsList hologramsList;
     
     public List<Integer> customs = new ArrayList<>();
     public static Hub instance;
@@ -51,6 +53,8 @@ public class Hub extends JavaPlugin {
     public ArrayList<Games> maintaining = new ArrayList<Games>();
     
     public Map<UUID, Integer> jumps = new HashMap<>();
+    
+    public HikabrainClassements hikabrainClassement;
     
 	private ChatManager chat;
 		
@@ -61,8 +65,7 @@ public class Hub extends JavaPlugin {
     @Override
     public void onEnable() {
     	instance = this;
-        hologramsList = new HologramsList();
-        hologramsList.init();
+
         playerUtils = new PlayerUtils();
         new EventManager(this).register(Bukkit.getPluginManager());
         scheduledExecutorService = Executors.newScheduledThreadPool(16);
@@ -72,7 +75,28 @@ public class Hub extends JavaPlugin {
         
         this.chat =  new ChatManager(true, true);
 
+        this.hikabrainClassement = new HikabrainClassements();
+        
         Bukkit.getScheduler().runTaskTimer(this, new QueueRunnable(), 0, 10);
+        new BukkitRunnable() {
+			
+			@Override
+			public void run() {
+				for(Player players : Bukkit.getOnlinePlayers()) {
+					hikabrainClassement.display(players);
+				}
+			}
+		}.runTaskTimer(this, 0, 60);
+		
+		new BukkitRunnable() {
+			
+			@Override
+			public void run() {
+				System.out.println("Classements Update !");
+				hikabrainClassement = new HikabrainClassements();
+			}
+		}.runTaskTimer(this, 0, 72000);
+		
         classement = new Classement(new Location(68, 20, -63).getAsLocation(), "§dClassement du jump", LionSpigot.get().getAccountManager().getJumpers());
         new Location(-86.5, 64, 38.5).getAsLocation().getBlock().setType(Material.DRAGON_EGG);
         
@@ -93,6 +117,7 @@ public class Hub extends JavaPlugin {
         new HubChampiMeuh();
         new HubSheep();
         new HubEnderman();
+        new HubCrystal();
     }
 
     @Override
@@ -106,10 +131,6 @@ public class Hub extends JavaPlugin {
 
     public PlayerUtils getPlayerUtils() {
         return playerUtils;
-    }
-
-    public HologramsList getHologramsList() {
-        return hologramsList;
     }
 
     public Classement getClassement() {

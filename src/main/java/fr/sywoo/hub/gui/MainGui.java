@@ -43,6 +43,7 @@ public class MainGui extends IQuickInventory {
 		hub.getPlayerUtils();
 
 		for(Games games : Games.values()) {
+			if(games == Games.ARENAKIT) continue;
 			List<String> lores = new ArrayList<String>(Arrays.asList(games.getDescription()));
 			lores.add("§2");
 			lores.add("§bJoueurs en jeux §f: §c" + PlayerUtils.getGamePlayer(games.getGroup()));

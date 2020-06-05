@@ -20,7 +20,7 @@ public class AnimKaptur extends Animatronic {
 
 	public AnimKaptur() {
 		super(new Location(Bukkit.getWorld("world"), 55.5, 67.0, 69.5, 180, 0), "Kaptur", ChatColor.DARK_AQUA, ChatColor.AQUA, 20);
-		setWalking(true);
+		setSalute(true);
 		setStuff(new ItemStack(Material.LEATHER_HELMET), new ItemStack(Material.LEATHER_CHESTPLATE),
 				new ItemStack(Material.LEATHER_LEGGINGS), new ItemStack(Material.LEATHER_BOOTS), new ItemStack(Material.DIAMOND_SWORD));
 		setHead("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOWRiZGFhNzU1MDk5ZWRkN2VmYTFmMTI4ODJjN2E1MWI1ODE1ZGI1MmUwYjE2NGFlZjZkZjlhMWY1M2VjYTIzIn19fQ==");

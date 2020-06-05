@@ -40,7 +40,9 @@ public class PlayerJoin implements Listener {
 
 		
 		hub.getClassement().getHolograms().display(player);
-		hub.jumps.put(player.getUniqueId(), 0);
+		if(LionSpigot.get().getAccountManager().get(player.getUniqueId()).getRank().hasPermission("hub.doublejump")){
+			hub.jumps.put(player.getUniqueId(), 0);
+		}
 
 		if(LionSpigot.get().getAccountManager().get(player.getUniqueId()) == null){
 			LionSpigot.get().getAccountManager().create(new AccountData(
@@ -61,7 +63,6 @@ public class PlayerJoin implements Listener {
 		new TabManager().reloadTab();
 		hub.getScoreboardManager().onLogin(player);
 
-		hub.getHologramsList().getHolograms().stream().forEach(holograms -> holograms.display(player));
 		player.getInventory().setItem(4, new GameSelectorItem().toItemStack());
 		player.getInventory().setItem(8, new LobbySelectorItem().toItemStack());
 		player.getInventory().setItem(0, new ShopItem().toItemStack());
@@ -70,9 +71,10 @@ public class PlayerJoin implements Listener {
 		player.setWalkSpeed(0.3F);
 		player.setGameMode(GameMode.ADVENTURE);
 		player.setAllowFlight(true);
-
 		if (accountData.getRank().hasPermission("lionuhc.lobby.fly")) {
-			player.setFlying(true);
+			if(player.getAllowFlight()) {
+				player.setFlying(true);
+			}
 		}else {
 			player.setFlying(false);
 		}

@@ -22,14 +22,16 @@ public class PlayerJump implements Listener {
 	@EventHandler
 	public void onFlightAttempt(PlayerToggleFlightEvent event) {
 		Player player = event.getPlayer();
-		if (JumpPlayer.getInfos(player) != null)
-			return;
 		if (LionSpigot.get().getAccountManager().get(player.getUniqueId()).getRank().hasPermission("lionuhc.lobby.fly"))
 			return;
-		if (!LionSpigot.get().getAccountManager().get(player.getUniqueId()).getRank().hasPermission("hub.doublejump")) {
-			event.setCancelled(true);
+		if (!Hub.instance.jumps.containsKey(player.getUniqueId()))
 			return;
-		}
+		event.setCancelled(true);
+		player.setFlying(false);
+		if (!LionSpigot.get().getAccountManager().get(player.getUniqueId()).getRank().hasPermission("hub.doublejump"))
+			return;
+		if (JumpPlayer.getInfos(player) != null)
+			return;
 		int maxJumps = 1;
 		AccountData data = LionSpigot.get().getAccountManager().get(player.getUniqueId());
 		if (data.getRank().getPower().equalsIgnoreCase("d")) {
@@ -43,8 +45,10 @@ public class PlayerJump implements Listener {
 		}
 		int actualJumps = Hub.instance.jumps.get(player.getUniqueId());
 		if (actualJumps >= maxJumps) {
+			player.setAllowFlight(false);
 			return;
 		}
+
 		actualJumps++;
 		Hub.instance.jumps.put(player.getUniqueId(), actualJumps);
 		playEffect(player, EnumParticle.CLOUD, player.getLocation());

@@ -28,7 +28,6 @@ public class PlayerQuit implements Listener {
         }
                 
         hub.getScoreboardManager().onLogout(player);
-        hub.getHologramsList().getHolograms().forEach(holograms -> holograms.destroy(player));
         if(ServerPlayerGui.getPlayerStartedServer().containsKey(player.getUniqueId())){
             LionSpigot.get().getServerManager().deleteServer(ServerPlayerGui.getPlayerStartedServer().get(player.getUniqueId()));
             ServerPlayerGui.getPlayerStartedServer().remove(player.getUniqueId());

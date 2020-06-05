@@ -1,51 +1,66 @@
 package fr.sywoo.hub.gui.servers;
 
-import org.bukkit.ChatColor;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.bukkit.Material;
-import org.bukkit.Sound;
-import org.bukkit.enchantments.Enchantment;
-import org.bukkit.inventory.ItemFlag;
 
 import de.dytanic.cloudnet.driver.CloudNetDriver;
-import de.dytanic.cloudnet.ext.bridge.BridgePlayerManager;
+import de.dytanic.cloudnet.driver.service.ServiceInfoSnapshot;
 import de.dytanic.cloudnet.ext.bridge.ServiceInfoSnapshotUtil;
 import fr.sywoo.api.inventory.IQuickInventory;
 import fr.sywoo.api.inventory.QuickInventory;
 import fr.sywoo.api.item.QuickItem;
+import fr.sywoo.api.spigot.LionSpigot;
+import fr.sywoo.hub.enums.Games;
+import fr.sywoo.hub.utils.PlayerUtils;
 
 public class ArenaGui extends IQuickInventory {
 
-    public ArenaGui() {
-        super("§aChoisis un serveur Arena", 9*5);
-    }
+	public ArenaGui() {
+		super("§aChoisis un serveur Arena", 9);
+	}
 
-    @SuppressWarnings("deprecation")
+	@SuppressWarnings("deprecation")
 	@Override
-    public void contents(QuickInventory quickInventory) {
-        quickInventory.setHorizontalLine(new QuickItem(Material.STAINED_GLASS_PANE).setName(" ").toItemStack(), 0, 8);
-        quickInventory.setHorizontalLine(new QuickItem(Material.STAINED_GLASS_PANE).setName(" ").toItemStack(), 35, 44);
-        quickInventory.setVerticalLine(new QuickItem(Material.STAINED_GLASS_PANE).setName(" ").toItemStack(), 0, 35);
-        quickInventory.setVerticalLine(new QuickItem(Material.STAINED_GLASS_PANE).setName(" ").toItemStack(), 8, 44);
-        quickInventory.setVerticalLine(new QuickItem(Material.STAINED_GLASS_PANE).toItemStack(), 10, 28);
-        quickInventory.setVerticalLine(new QuickItem(Material.STAINED_GLASS_PANE).toItemStack(), 16, 34);
-        CloudNetDriver.getInstance().getCloudServiceProvider().getStartedCloudServices().stream()
-                .filter(serviceInfoSnapshot -> serviceInfoSnapshot.getServiceId().getName().startsWith("Arena-"))
-                .forEach(serviceInfoSnapshot -> {
-                    String arena = serviceInfoSnapshot.getServiceId().getName().substring(0, 5); String number = serviceInfoSnapshot.getServiceId().getName().substring(6);
-                    String name = ChatColor.DARK_GRAY + arena + " §b#" + number;
-                    
-                    quickInventory.addItem(new QuickItem(Material.STAINED_CLAY, 1, (byte) 5)
-                            .setName(name + " §7(" + ServiceInfoSnapshotUtil.getPlayers(serviceInfoSnapshot).size() + " joueurs)")
-                            .setLore("" , "§8⤷ §eClique ici pour rejoindre")
-                            .addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 65)
-                            .addItemFlag(ItemFlag.HIDE_ENCHANTS)
-                            .toItemStack(), quickEvent -> {
-                        quickEvent.getPlayer().sendMessage("§eConnexion à §a" + serviceInfoSnapshot.getServiceId().getName());
-                        quickEvent.getPlayer().playSound(quickEvent.getPlayer().getLocation(), Sound.LEVEL_UP, 10, 10);
-                        BridgePlayerManager.getInstance().proxySendPlayer(quickEvent.getPlayer().getUniqueId(), serviceInfoSnapshot.getServiceId().getName());
-                    });
-                });
-        quickInventory.setVerticalLine(new QuickItem(Material.AIR).toItemStack(), 10, 28);
-        quickInventory.setVerticalLine(new QuickItem(Material.AIR).toItemStack(), 16, 34);
-    }
+	public void contents(QuickInventory inv) {
+		List<String> lores = new ArrayList<String>(Arrays.asList(Games.ARENA.getDescription()));
+		lores.add("§2");
+		lores.add("§bJoueurs en jeux §f: §c" + PlayerUtils.getGamePlayer("Arena-"));
+		lores.add("§6Développeur : §e" + Games.ARENA.getDevelopper());
+		lores.add("§3");
+		inv.setItem(new QuickItem(Material.IRON_SWORD).setName("§a§lArena Classique").setLore(lores).toItemStack(), onClick -> {
+			onClick.getPlayer().sendMessage("§a§lRecherche d'un serveur.");
+			for(ServiceInfoSnapshot snapshot : CloudNetDriver.getInstance().getCloudServiceProvider().getStartedCloudServices()){
+				if(snapshot.getServiceId().getName().startsWith("Arena-")){
+					if(ServiceInfoSnapshotUtil.getPlayers(snapshot) == null) continue;
+					if(ServiceInfoSnapshotUtil.getPlayers(snapshot).size() < 25){
+						onClick.getPlayer().sendMessage("§a§lTéléporation sur " + snapshot.getServiceId().getName());
+						LionSpigot.get().getPlayerServerManager().sendPlayerToServer(onClick.getPlayer(), snapshot);
+						break;
+					}
+				}
+			}
+		}, 2);
+
+		List<String> lores2 = new ArrayList<String>(Arrays.asList(Games.ARENAKIT.getDescription()));
+		lores2.add("§2");
+		lores2.add("§bJoueurs en jeux §f: §c" + PlayerUtils.getGamePlayer("ArenaKit-"));
+		lores2.add("§6Développeur : §e" + Games.ARENAKIT.getDevelopper());
+		lores2.add("§3");
+		inv.setItem(new QuickItem(Material.GOLD_SWORD).setName("§a§lArena Kit").setLore(lores2).toItemStack(), onClick -> {
+			onClick.getPlayer().sendMessage("§a§lRecherche d'un serveur.");
+			for(ServiceInfoSnapshot snapshot : CloudNetDriver.getInstance().getCloudServiceProvider().getStartedCloudServices()){
+				if(snapshot.getServiceId().getName().startsWith("ArenaKit-")){
+					if(ServiceInfoSnapshotUtil.getPlayers(snapshot) == null) continue;
+					if(ServiceInfoSnapshotUtil.getPlayers(snapshot).size() < 25){
+						onClick.getPlayer().sendMessage("§a§lTéléporation sur " + snapshot.getServiceId().getName());
+						LionSpigot.get().getPlayerServerManager().sendPlayerToServer(onClick.getPlayer(), snapshot);
+						break;
+					}
+				}
+			}
+		}, 6);
+	}
 }

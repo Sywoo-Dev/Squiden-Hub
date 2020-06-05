@@ -10,6 +10,7 @@ import fr.sywoo.hub.gui.servers.UHCGui;
 public enum Games {
 
 	ARENA(new ItemStack(Material.IRON_SWORD), new ArenaGui(), "Arena","Sywoo", "Arena", "§d§k|§r §e§lBêta §d§k|", "Insert", "Description", "HERE"),
+	ARENAKIT(new ItemStack(Material.GOLD_SWORD), new ArenaGui(), "Arena Kit","Sywoo", "Arena", "§d§k|§r §e§lBêta §d§k|", "Insert", "Description", "HERE"),
 	HIKABRAIN(new ItemStack(Material.SANDSTONE), null, "Hikabrain","Maygo", "Hikabrain", "§d§k|§r §e§lBêta §d§k|", "Insert", "Description", "HERE"),
 	KAPTUR(new ItemStack(Material.BEACON), null, "Kaptur", "Sywoo","Kaptur", "§d§k|§r §e§lBêta §d§k|", "Insert", "Description", "HERE"),
 	UHCRUN(new ItemStack(Material.GOLDEN_CARROT), null, "UhcRun","Maygo", "UhcRun", "§d§k|§r §e§lBêta §d§k|", "Insert", "Description", "HERE"),
