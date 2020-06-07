@@ -10,13 +10,9 @@ import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
-import fr.sywoo.api.account.AccountData;
 import fr.sywoo.api.inventory.IQuickInventory;
 import fr.sywoo.api.inventory.QuickInventory;
 import fr.sywoo.api.item.QuickItem;
-import fr.sywoo.api.queue.Queue;
-import fr.sywoo.api.serverdata.ServerStatus;
-import fr.sywoo.api.serverdata.ServersData;
 import fr.sywoo.api.spigot.LionSpigot;
 import fr.sywoo.hub.Hub;
 import fr.sywoo.hub.enums.Games;
@@ -61,20 +57,7 @@ public class MainGui extends IQuickInventory {
 							games.getInventory().open(onClick.getPlayer());
 						}else {
 							if(!Hub.instance.maintaining.contains(games)) {
-
-								if(Queue.getPlayerQueue(onClick.getPlayer()) != null) {
-									Queue.getPlayerQueue(onClick.getPlayer()).removePlayer(onClick.getPlayer());
-								}
-								if(LionSpigot.get().getServerManager().getServerGroup(games.getGroup()).size() == 0) {
-									String name = LionSpigot.get().getServerManager().createAndGetServerName(games.getGroup());
-									LionSpigot.get().getServerDataManager().create(new ServersData(LionSpigot.get().getProjectName(), name, ServerStatus.WAITING, games.name()));
-									onClick.getPlayer().sendMessage("§a§lUn Serveur est en cours de lancement...");
-								}
-								if(!Queue.existFor(games.getGroup())) {
-									new Queue(games.getGroup(), games.name(), games.getGroup());
-								}
-								AccountData data = LionSpigot.get().getAccountManager().get(onClick.getPlayer().getUniqueId());
-								Queue.getByName(games.getGroup()).addPlayer(data.getRank().getPower() + onClick.getPlayer().getUniqueId());
+								LionSpigot.get().addPlayerInWaitingQueue(onClick.getPlayer(), games.getGroup());
 								onClick.getPlayer().closeInventory();
 							}else {
 								onClick.getPlayer().sendMessage("§cCe jeu est en maintenance !");

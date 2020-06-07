@@ -15,7 +15,6 @@ import com.google.common.base.Strings;
 import fr.sywoo.api.inventory.IQuickInventory;
 import fr.sywoo.api.inventory.QuickInventory;
 import fr.sywoo.api.item.QuickItem;
-import fr.sywoo.api.queue.Queue;
 import fr.sywoo.api.serverdata.GameType;
 import fr.sywoo.api.serverdata.ServerStatus;
 import fr.sywoo.api.serverdata.ServersData;
@@ -62,7 +61,7 @@ public class ServerPlayerGui extends IQuickInventory {
 								if(i == 20){
 									playerStartedServer.remove(quickEvent.getPlayer().getUniqueId());
 									LionSpigot.get().getPlayerServerManager().sendPlayerToServer(quickEvent.getPlayer(), name);
-									LionSpigot.get().getQueues().put(name, new Queue(name));
+									quickEvent.getPlayer().sendMessage("§cEn panne, je viens de refaire les queues !");
 									uhc.cancel();
 								}
 							}

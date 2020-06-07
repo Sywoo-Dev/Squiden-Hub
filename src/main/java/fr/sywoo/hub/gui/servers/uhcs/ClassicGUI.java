@@ -4,14 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.Material;
-import org.bukkit.Sound;
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import de.dytanic.cloudnet.driver.CloudNetDriver;
-import de.dytanic.cloudnet.driver.service.ServiceInfoSnapshot;
 import de.dytanic.cloudnet.ext.bridge.ServiceInfoSnapshotUtil;
-import fr.sywoo.api.account.AccountData;
 import fr.sywoo.api.inventory.IQuickInventory;
 import fr.sywoo.api.inventory.QuickInventory;
 import fr.sywoo.api.item.QuickItem;
@@ -72,45 +68,13 @@ public class ClassicGUI extends IQuickInventory {
 							.setName(customName)
 							.setLore(lore)
 							.toItemStack(), quickEvent -> {
-								queue(quickEvent.getPlayer(), serviceInfoSnapshot, serverData);
+								LionSpigot.get().addPlayerInWaitingQueue(quickEvent.getPlayer(), serviceInfoSnapshot.getServiceId().getName());
 							});	
 				}
 			});
 		}, 20);
 		quickInventory.setVerticalLine(new QuickItem(Material.AIR).toItemStack(), 10, 28);
 		quickInventory.setVerticalLine(new QuickItem(Material.AIR).toItemStack(), 16, 34);
-	}
-
-	public void queue(Player player, ServiceInfoSnapshot serviceInfoSnapshot, ServersData serverData){
-		if(!Queue.existFor(serviceInfoSnapshot.getServiceId().getName())){
-			new Queue(serviceInfoSnapshot.getServiceId().getName());
-		}
-		Queue queue = Queue.getByName(serviceInfoSnapshot.getServiceId().getName());
-		queue.setServersData(serverData);
-		
-		AccountData data = LionSpigot.get().getAccountManager().get(player.getUniqueId());
-		
-		if(queue.getServersData().getOwner().equalsIgnoreCase(player.getName())) {
-			LionSpigot.get().getPlayerServerManager().sendPlayerToServer(player.getUniqueId(), queue.getServersData().getName());
-			return;
-		}
-		if(queue.getPlayers().contains(data.getRank().getPower() + player.getUniqueId())){
-			queue.removePlayer(player);
-
-			player.playSound(player.getLocation(), Sound.VILLAGER_YES, 1, 1);
-			player.sendMessage("§7§m-----------------------------------------------------");
-			player.sendMessage("§bVous avez quitté la file d'attente !");
-			player.sendMessage("§7§m-----------------------------------------------------");
-			return;
-		}
-
-		queue.addPlayer(data.getRank().getPower() + player.getUniqueId());
-
-		player.playSound(player.getLocation(), Sound.LEVEL_UP, 1, 1);
-		player.sendMessage("§7§m-----------------------------------------------------");
-		player.sendMessage("§aVous avez été ajouté à la file d'attente pour ce jeu !");
-		player.sendMessage("§eVous êtes à la position : §6" + queue.getPosition(data.getRank().getPower() + player.getUniqueId()) + "§e/§6" + queue.getPlayers().size());
-		player.sendMessage("§7§m-----------------------------------------------------");
 	}
 
 }

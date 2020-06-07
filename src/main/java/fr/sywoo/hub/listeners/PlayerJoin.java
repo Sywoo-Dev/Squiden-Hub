@@ -18,7 +18,6 @@ import fr.sywoo.api.settings.Settings.SettingsEnum;
 import fr.sywoo.api.spigot.LionSpigot;
 import fr.sywoo.api.utils.Title;
 import fr.sywoo.hub.Hub;
-import fr.sywoo.hub.classements.HikabrainClassements;
 import fr.sywoo.hub.items.GameSelectorItem;
 import fr.sywoo.hub.items.GuildItem;
 import fr.sywoo.hub.items.LobbySelectorItem;
@@ -37,13 +36,7 @@ public class PlayerJoin implements Listener {
 	public void onJoin(PlayerJoinEvent event){
 		Player player = event.getPlayer();
 		event.setJoinMessage(null);
-
 		
-		hub.getClassement().getHolograms().display(player);
-		if(LionSpigot.get().getAccountManager().get(player.getUniqueId()).getRank().hasPermission("hub.doublejump")){
-			hub.jumps.put(player.getUniqueId(), 0);
-		}
-
 		if(LionSpigot.get().getAccountManager().get(player.getUniqueId()) == null){
 			LionSpigot.get().getAccountManager().create(new AccountData(
 					player.getUniqueId(),
@@ -55,6 +48,15 @@ public class PlayerJoin implements Listener {
 
 		if(accountData.getRank().hasPermission("hub.join")) {
 			event.setJoinMessage(accountData.getPrefix() + player.getName() + " §aA rejoint le Hub !");
+		}
+
+
+		
+		hub.getClassement().getHolograms().display(player);
+		hub.getClassement2().getHolograms().display(player);
+		if(LionSpigot.get().getAccountManager().get(player.getUniqueId()).getRank().hasPermission("hub.doublejump")){
+			hub.jumps.put(player.getUniqueId(), 0);
+			player.setAllowFlight(true);
 		}
 
 
@@ -70,16 +72,15 @@ public class PlayerJoin implements Listener {
 		player.getActivePotionEffects().clear();
 		player.setWalkSpeed(0.3F);
 		player.setGameMode(GameMode.ADVENTURE);
-		player.setAllowFlight(true);
+		
 		if (accountData.getRank().hasPermission("lionuhc.lobby.fly")) {
+			player.setAllowFlight(true);
 			if(player.getAllowFlight()) {
 				player.setFlying(true);
 			}
 		}else {
 			player.setFlying(false);
 		}
-		
-		new HikabrainClassements().display(player);
 		
 		if(accountData.getLastServer() != null) {
 			String server = LionSpigot.get().getAccountManager().get(player.getUniqueId()).getLastServer();

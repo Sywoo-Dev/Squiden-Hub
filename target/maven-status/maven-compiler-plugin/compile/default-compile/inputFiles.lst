@@ -1,7 +1,7 @@
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\animas\AnimArena.java
+D:\Workspace\Hub\src\main\java\fr\sywoo\hub\gui\servers\HikabrainGUI.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\gui\servers\ArenaGui.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\scoreboard\PersonalScoreboard.java
-D:\Workspace\Hub\src\main\java\fr\sywoo\hub\command\CommandJoin.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\animas\Animatronic.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\classements\HikabrainClassements.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\items\JumpLeaveItem.java
@@ -13,7 +13,6 @@ D:\Workspace\Hub\src\main\java\fr\sywoo\hub\gui\settings\SettingsGui.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\npc\SkywarsGame.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\task\ServerTask.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\scoreboard\ScoreboardManager.java
-D:\Workspace\Hub\src\main\java\fr\sywoo\hub\task\QueueRunnable.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\command\RankCommand.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\utils\Location.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\Hub.java

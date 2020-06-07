@@ -4,7 +4,6 @@ main: fr.sywoo.hub.Hub
 version: 1.0.0
 depend: [API]
 commands:
-  join:
   perm:
   rank:
   jump:

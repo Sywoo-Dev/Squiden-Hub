@@ -33,7 +33,6 @@ import fr.sywoo.hub.customes.HubSheep;
 import fr.sywoo.hub.customes.HubSnowMan;
 import fr.sywoo.hub.enums.Games;
 import fr.sywoo.hub.scoreboard.ScoreboardManager;
-import fr.sywoo.hub.task.QueueRunnable;
 import fr.sywoo.hub.utils.Classement;
 import fr.sywoo.hub.utils.EventManager;
 import fr.sywoo.hub.utils.Location;
@@ -44,7 +43,7 @@ public class Hub extends JavaPlugin {
     private ScoreboardManager scoreboardManager;
     private ScheduledExecutorService executorMonoThread;
     private ScheduledExecutorService scheduledExecutorService;
-    private Classement classement;
+    private Classement classement, classement2;
     private PlayerUtils playerUtils;
     
     public List<Integer> customs = new ArrayList<>();
@@ -73,11 +72,13 @@ public class Hub extends JavaPlugin {
         scoreboardManager = new ScoreboardManager(this);
         new WorldCreator("world").createWorld();
         
+        maintaining.add(Games.GOLEMRUSH);
+        maintaining.add(Games.AGEOFEMPIRE);
+        
         this.chat =  new ChatManager(true, true);
 
         this.hikabrainClassement = new HikabrainClassements();
         
-        Bukkit.getScheduler().runTaskTimer(this, new QueueRunnable(), 0, 10);
         new BukkitRunnable() {
 			
 			@Override
@@ -97,7 +98,8 @@ public class Hub extends JavaPlugin {
 			}
 		}.runTaskTimer(this, 0, 72000);
 		
-        classement = new Classement(new Location(68, 20, -63).getAsLocation(), "§dClassement du jump", LionSpigot.get().getAccountManager().getJumpers());
+        classement = new Classement(new Location(-110, 150, -59).getAsLocation(), "§dClassement du jump", LionSpigot.get().getAccountManager().getJumpers());
+        classement2 = new Classement(new Location(-143.5, 55, 13.5).getAsLocation(), "§dClassement du jump", LionSpigot.get().getAccountManager().getJumpers());
         new Location(-86.5, 64, 38.5).getAsLocation().getBlock().setType(Material.DRAGON_EGG);
         
         // BARRIER : new AnimArena();
@@ -135,6 +137,10 @@ public class Hub extends JavaPlugin {
 
     public Classement getClassement() {
         return classement;
+    }
+    
+    public Classement getClassement2() {
+        return classement2;
     }
 
     public ScheduledExecutorService getExecutorMonoThread() {

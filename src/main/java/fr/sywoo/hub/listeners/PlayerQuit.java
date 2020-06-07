@@ -5,7 +5,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import fr.sywoo.api.queue.Queue;
 import fr.sywoo.api.spigot.LionSpigot;
 import fr.sywoo.hub.Hub;
 import fr.sywoo.hub.gui.servers.ServerPlayerGui;
@@ -22,10 +21,6 @@ public class PlayerQuit implements Listener {
     public void onQuit(PlayerQuitEvent event){
         Player player = event.getPlayer();
         event.setQuitMessage(null);
-        if(Queue.playerInQueue(player)){
-            if(Queue.getPlayerQueue(player).getPlayers() == null) return;
-            Queue.getPlayerQueue(player).getPlayers().remove(LionSpigot.get().getAccountManager().get(player.getUniqueId()).getRank().getPower() + player.getUniqueId());
-        }
                 
         hub.getScoreboardManager().onLogout(player);
         if(ServerPlayerGui.getPlayerStartedServer().containsKey(player.getUniqueId())){

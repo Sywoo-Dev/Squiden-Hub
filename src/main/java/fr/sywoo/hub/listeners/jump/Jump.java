@@ -5,7 +5,6 @@ import java.util.Date;
 
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
-import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -68,6 +67,10 @@ public class Jump implements Listener {
                         return;
                     }
                     JumpPlayer.getInfos(player).stop();
+                    boolean reward = false;
+                    if(LionSpigot.get().getAccountManager().get(player.getUniqueId()).getJump() == null) {
+                    	reward = true;
+                    }
                     if(LionSpigot.get().getAccountManager().get(player.getUniqueId()).getJump() == null){
                     	fr.sywoo.api.jump.Jump jump = new fr.sywoo.api.jump.Jump(JumpPlayer.getInfos(player).getSec());
                         LionSpigot.get().getAccountManager().update(LionSpigot.get().getAccountManager().get(player.getUniqueId()).setJump(jump));
@@ -80,32 +83,33 @@ public class Jump implements Listener {
                     }
                     for(Player players : Bukkit.getOnlinePlayers()){
                         hub.getClassement().getHolograms().destroy(players);
+                        hub.getClassement2().getHolograms().destroy(players);
                     }
                     hub.getClassement().update(LionSpigot.get().getAccountManager().getJumpers());
                     for(Player players : Bukkit.getOnlinePlayers()){
                         hub.getClassement().getHolograms().display(players);
+                        hub.getClassement2().getHolograms().display(players);
                     }
                     player.setWalkSpeed(0.3F);
                     player.sendMessage(checkPoint.getMessage().replace("<time>", new FormatTime(JumpPlayer.getInfos(player).getSec()).toString()));
-                    player.sendMessage("§lJump §l» §2Téléportation au spawn dans 5 secondes....");
+                    player.sendMessage("§lJump §l» §2Félicitations, vous avez terminé le jump !");
+                    if(reward) {
+                    	player.sendMessage("§aPour avoir complété le jump pour la première fois vous remporter 50 coins !");
+                    	player.sendMessage("§6Vous avez également accès au banquet du roi Squid IV !");
+                    	LionSpigot.get().getAccountManager().update(LionSpigot.get().getAccountManager().get(player.getUniqueId()).addCoins(50));
+                    }
                     JumpPlayer.delete(player);
-                    Bukkit.getScheduler().scheduleSyncDelayedTask(hub, new Runnable() {
-                        @Override
-                        public void run() {
-                            player.teleport(new Location(Bukkit.getWorld("world"), -111.5, 149.2, -53.5, -140, 0));
-                            player.getInventory().clear();
-                            player.updateInventory();
-                    		player.getInventory().setItem(4, new GameSelectorItem().toItemStack());
-                    		player.getInventory().setItem(8, new LobbySelectorItem().toItemStack());
-                    		player.getInventory().setItem(0, new ShopItem().toItemStack());
-                    		player.getInventory().setItem(7, new GuildItem().toItemStack());
-                            player.setGameMode(GameMode.ADVENTURE);
-                            if (LionSpigot.get().getAccountManager().get(player.getUniqueId()).getRank().hasPermission("lionuhc.lobby.fly")) {
-                                player.setAllowFlight(true);
-                                player.setFlying(true);
-                            }
-                        }
-                    }, 20*5);
+                    player.getInventory().clear();
+                    player.updateInventory();
+            		player.getInventory().setItem(4, new GameSelectorItem().toItemStack());
+            		player.getInventory().setItem(8, new LobbySelectorItem().toItemStack());
+            		player.getInventory().setItem(0, new ShopItem().toItemStack());
+            		player.getInventory().setItem(7, new GuildItem().toItemStack());
+                    player.setGameMode(GameMode.ADVENTURE);
+                    if (LionSpigot.get().getAccountManager().get(player.getUniqueId()).getRank().hasPermission("lionuhc.lobby.fly")) {
+                        player.setAllowFlight(true);
+                        player.setFlying(true);
+                    }
                     return;
                 }
                 if(JumpPlayer.getInfos(player) == null) return;

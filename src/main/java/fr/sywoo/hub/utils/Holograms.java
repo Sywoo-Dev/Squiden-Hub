@@ -22,7 +22,7 @@ public class Holograms {
     private List<String> lines;
     private Location loc;
 
-    private static final double ABS = 0.23D;
+    private static final double ABS = 0.22D;
     private static String path;
     private static String version;
 

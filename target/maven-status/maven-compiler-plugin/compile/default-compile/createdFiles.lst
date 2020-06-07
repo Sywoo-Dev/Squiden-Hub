@@ -22,9 +22,7 @@ fr\sywoo\hub\utils\PlayerUtils.class
 fr\sywoo\hub\utils\Holograms.class
 fr\sywoo\hub\utils\EventManager.class
 fr\sywoo\hub\command\RankCommand.class
-fr\sywoo\hub\task\QueueRunnable.class
 fr\sywoo\hub\animas\Animatronic$2.class
-fr\sywoo\hub\command\CommandJoin.class
 fr\sywoo\hub\gui\servers\UHCGui.class
 fr\sywoo\hub\player\JumpPlayer$1.class
 fr\sywoo\hub\customes\HubEnderman.class
@@ -39,6 +37,7 @@ fr\sywoo\hub\scoreboard\Reflection.class
 fr\sywoo\hub\animas\AnimHikaBrain.class
 fr\sywoo\hub\animas\AnimLG.class
 fr\sywoo\hub\animas\AnimTaupe.class
+fr\sywoo\hub\gui\servers\HikabrainGUI.class
 fr\sywoo\hub\listeners\PlayerChat.class
 fr\sywoo\hub\scoreboard\VObjective$ObjectiveLocation.class
 fr\sywoo\hub\listeners\PlayerJoin$2.class
@@ -52,7 +51,6 @@ fr\sywoo\hub\listeners\CancelledEvents.class
 fr\sywoo\hub\animas\Animatronic$1.class
 fr\sywoo\hub\enums\Games.class
 fr\sywoo\hub\utils\Cuboid.class
-fr\sywoo\hub\listeners\jump\Jump$1.class
 fr\sywoo\hub\utils\MathsUtils.class
 fr\sywoo\hub\command\PermCommand.class
 fr\sywoo\hub\gui\settings\SettingsGui.class

@@ -10,7 +10,7 @@ public class HubCrystal extends CustomEntity{
 
 	
 	public HubCrystal() {
-		super(EntityType.ENDER_CRYSTAL, "", new Location(-78.85, 66, 36.8).getAsLocation(), false, false);
+		super(EntityType.ENDER_CRYSTAL, "", new Location(-79.5, 66, 36.5).getAsLocation(), false, false);
 	}
 	
 	@Override

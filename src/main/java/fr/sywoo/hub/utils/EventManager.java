@@ -3,7 +3,6 @@ package fr.sywoo.hub.utils;
 import org.bukkit.plugin.PluginManager;
 
 import fr.sywoo.hub.Hub;
-import fr.sywoo.hub.command.CommandJoin;
 import fr.sywoo.hub.command.JumpCommand;
 import fr.sywoo.hub.command.PermCommand;
 import fr.sywoo.hub.command.RankCommand;
@@ -40,6 +39,5 @@ public class EventManager {
         hub.getCommand("rank").setExecutor(new RankCommand());
         hub.getCommand("jump").setExecutor(new JumpCommand());
         hub.getCommand("perm").setExecutor(new PermCommand());
-        hub.getCommand("join").setExecutor(new CommandJoin());
     }
 }
