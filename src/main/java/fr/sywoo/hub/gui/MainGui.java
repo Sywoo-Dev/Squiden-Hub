@@ -42,7 +42,13 @@ public class MainGui extends IQuickInventory {
 			if(games == Games.ARENAKIT) continue;
 			List<String> lores = new ArrayList<String>(Arrays.asList(games.getDescription()));
 			lores.add("§2");
-			lores.add("§bJoueurs en jeux §f: §c" + PlayerUtils.getGamePlayer(games.getGroup()));
+			if(games == Games.ARENA) {
+				lores.add("§bJoueurs en jeux §f: §c" + (PlayerUtils.getGamePlayer(games.getGroup()) + PlayerUtils.getGamePlayer("ArenaKit")));
+			}else if(games == Games.HIKABRAIN) {
+				lores.add("§bJoueurs en jeux §f: §c" + (PlayerUtils.getGamePlayer(games.getGroup()) + PlayerUtils.getGamePlayer("HikaTO2") + PlayerUtils.getGamePlayer("HikaTO4")));
+			}else {
+				lores.add("§bJoueurs en jeux §f: §c" + PlayerUtils.getGamePlayer(games.getGroup()));
+			}
 			lores.add("§6Développeur : §e" + games.getDevelopper());
 			lores.add("§3");
 			if(Hub.instance.maintaining.contains(games)){

@@ -22,6 +22,11 @@ public class PlayerJump implements Listener {
 	@EventHandler
 	public void onFlightAttempt(PlayerToggleFlightEvent event) {
 		Player player = event.getPlayer();
+		if(JumpPlayer.getInfos(player) != null) {
+            player.setFlying(false);
+            player.setAllowFlight(false);
+			return;
+		}
 		if (LionSpigot.get().getAccountManager().get(player.getUniqueId()).getRank().hasPermission("lionuhc.lobby.fly"))
 			return;
 		if (!Hub.instance.jumps.containsKey(player.getUniqueId()))

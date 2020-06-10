@@ -27,7 +27,7 @@ public class ArenaGui extends IQuickInventory {
 	public void contents(QuickInventory inv) {
 		List<String> lores = new ArrayList<String>(Arrays.asList(Games.ARENA.getDescription()));
 		lores.add("§2");
-		lores.add("§bJoueurs en jeux §f: §c" + PlayerUtils.getGamePlayer("Arena-"));
+		lores.add("§bJoueurs en jeux §f: §c" + PlayerUtils.getGamePlayer("Arena"));
 		lores.add("§6Développeur : §e" + Games.ARENA.getDevelopper());
 		lores.add("§3");
 		inv.setItem(new QuickItem(Material.IRON_SWORD).setName("§a§lArena Classique").setLore(lores).toItemStack(), onClick -> {
@@ -46,7 +46,7 @@ public class ArenaGui extends IQuickInventory {
 
 		List<String> lores2 = new ArrayList<String>(Arrays.asList(Games.ARENAKIT.getDescription()));
 		lores2.add("§2");
-		lores2.add("§bJoueurs en jeux §f: §c" + PlayerUtils.getGamePlayer("ArenaKit-"));
+		lores2.add("§bJoueurs en jeux §f: §c" + PlayerUtils.getGamePlayer("ArenaKit"));
 		lores2.add("§6Développeur : §e" + Games.ARENAKIT.getDevelopper());
 		lores2.add("§3");
 		inv.setItem(new QuickItem(Material.GOLD_SWORD).setName("§a§lArena Kit").setLore(lores2).toItemStack(), onClick -> {

@@ -5,7 +5,6 @@ fr\sywoo\hub\utils\Classement$1.class
 fr\sywoo\hub\gui\settings\SettingsGui$1.class
 fr\sywoo\hub\scoreboard\VObjective$RawObjective.class
 fr\sywoo\hub\utils\FormatTime.class
-fr\sywoo\hub\utils\TeamsTagsManager.class
 fr\sywoo\hub\animas\AnimGolemRush.class
 fr\sywoo\hub\scoreboard\PersonalScoreboard.class
 fr\sywoo\hub\animas\Animatronic.class
@@ -13,7 +12,6 @@ fr\sywoo\hub\gui\servers\ServerPlayerGui$1.class
 fr\sywoo\hub\listeners\PlayerMove.class
 fr\sywoo\hub\scoreboard\ScoreboardManager.class
 fr\sywoo\hub\utils\Cuboid$1.class
-fr\sywoo\hub\listeners\PlayerJoin$1.class
 fr\sywoo\hub\customes\HubChampiMeuh.class
 fr\sywoo\hub\animas\Animatronic$3.class
 fr\sywoo\hub\animas\AnimClassicMeetup.class
@@ -32,6 +30,7 @@ fr\sywoo\hub\animas\AnimUHCRun.class
 fr\sywoo\hub\items\JumpLeaveItem.class
 fr\sywoo\hub\scoreboard\Reflection$DataType.class
 fr\sywoo\hub\listeners\jump\Jump.class
+fr\sywoo\hub\listeners\PlayerInteract.class
 fr\sywoo\hub\classements\HikabrainClassements.class
 fr\sywoo\hub\scoreboard\Reflection.class
 fr\sywoo\hub\animas\AnimHikaBrain.class
@@ -40,7 +39,6 @@ fr\sywoo\hub\animas\AnimTaupe.class
 fr\sywoo\hub\gui\servers\HikabrainGUI.class
 fr\sywoo\hub\listeners\PlayerChat.class
 fr\sywoo\hub\scoreboard\VObjective$ObjectiveLocation.class
-fr\sywoo\hub\listeners\PlayerJoin$2.class
 fr\sywoo\hub\gui\servers\uhcs\TaupeGUI.class
 fr\sywoo\hub\animas\AnimSkyWars.class
 fr\sywoo\hub\gui\MainGui.class
@@ -61,16 +59,15 @@ fr\sywoo\hub\customes\HubCrystal.class
 fr\sywoo\hub\gui\servers\uhcs\ClassicGUI.class
 fr\sywoo\hub\command\JumpCommand.class
 fr\sywoo\hub\Hub$2.class
-fr\sywoo\hub\utils\TabManager.class
 fr\sywoo\hub\Hub.class
 fr\sywoo\hub\utils\CustomEntity.class
 fr\sywoo\hub\npc\SkywarsGame$1.class
 fr\sywoo\hub\gui\servers\LobbyGui.class
-fr\sywoo\hub\animas\AnimArena.class
 fr\sywoo\hub\gui\servers\ArenaGui.class
 fr\sywoo\hub\scoreboard\VObjective.class
 fr\sywoo\hub\customes\HubSheep.class
 fr\sywoo\hub\listeners\PlayerJoin.class
+fr\sywoo\hub\animas\AnimArenaClassic.class
 fr\sywoo\hub\items\GuildItem.class
 fr\sywoo\hub\scoreboard\Reflection$PackageType.class
 fr\sywoo\hub\scoreboard\Reflection$PacketType.class
@@ -80,7 +77,9 @@ fr\sywoo\hub\customes\HubSnowMan.class
 fr\sywoo\hub\gui\servers\uhcs\LgGUI.class
 fr\sywoo\hub\npc\SkywarsGame.class
 fr\sywoo\hub\task\ServerTask.class
+fr\sywoo\hub\task\EffectTask.class
 fr\sywoo\hub\task\ScoreboardTask.class
+fr\sywoo\hub\animas\AnimArenaKit.class
 fr\sywoo\hub\task\MessageTask.class
 fr\sywoo\hub\gui\rank\AcceptCreateRank.class
 fr\sywoo\hub\scoreboard\ObjectiveSign.class

@@ -11,7 +11,6 @@ import de.dytanic.cloudnet.ext.bridge.ServiceInfoSnapshotUtil;
 import fr.sywoo.api.inventory.IQuickInventory;
 import fr.sywoo.api.inventory.QuickInventory;
 import fr.sywoo.api.item.QuickItem;
-import fr.sywoo.api.queue.Queue;
 import fr.sywoo.api.serverdata.ServersData;
 import fr.sywoo.api.serverdata.uhc.UHCData;
 import fr.sywoo.api.spigot.LionSpigot;
@@ -59,9 +58,7 @@ public class TaupeGUI extends IQuickInventory {
 					if(customName == null){
 						customName = "§6§lUHCHost";
 					}
-					if(!Queue.existFor(serviceInfoSnapshot.getServiceId().getName())){
-						new Queue(serviceInfoSnapshot.getServiceId().getName());
-					}
+
 					if(data.getWhitelisted().contains(quickInventory.getOwner().getUniqueId())) { lore.add("§aVous êtes whitelist !"); }
 					quickInventory.addItem(new QuickItem(Material.STAINED_CLAY, 1, (byte) 14)
 							.setName(customName)

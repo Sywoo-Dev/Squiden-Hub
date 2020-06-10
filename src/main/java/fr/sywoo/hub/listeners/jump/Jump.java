@@ -35,7 +35,10 @@ public class Jump implements Listener {
     @EventHandler
     public void onMove(PlayerMoveEvent event){
         Player player = event.getPlayer();
-        
+        if(JumpPlayer.getInfos(player) != null) {
+            player.setFlying(false);
+            player.setAllowFlight(false);	
+        }
         for(CheckPoint checkPoint : CheckPoint.values()){
             if(checkPoint.getCuboid().contains(player)){
                 if(JumpPlayer.getInfos(player) == null && checkPoint == CheckPoint.START) {

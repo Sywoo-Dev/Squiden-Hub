@@ -17,6 +17,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import fr.sywoo.api.spigot.LionSpigot;
 import fr.sywoo.api.utils.ChatManager;
+import fr.sywoo.hub.animas.AnimArenaKit;
 import fr.sywoo.hub.animas.AnimClassicMeetup;
 import fr.sywoo.hub.animas.AnimGolemRush;
 import fr.sywoo.hub.animas.AnimHikaBrain;
@@ -66,12 +67,12 @@ public class Hub extends JavaPlugin {
     	instance = this;
 
         playerUtils = new PlayerUtils();
-        new EventManager(this).register(Bukkit.getPluginManager());
         scheduledExecutorService = Executors.newScheduledThreadPool(16);
         executorMonoThread = Executors.newScheduledThreadPool(1);
         scoreboardManager = new ScoreboardManager(this);
         new WorldCreator("world").createWorld();
-        
+        new EventManager(this).register(Bukkit.getPluginManager());
+
         maintaining.add(Games.GOLEMRUSH);
         maintaining.add(Games.AGEOFEMPIRE);
         
@@ -112,6 +113,9 @@ public class Hub extends JavaPlugin {
         
         new AnimUHCRun();
         new AnimSkyWars();
+        
+        new AnimArenaKit();
+        
         //BARRIER : new AnimSlasher();
         new AnimGolemRush();
         

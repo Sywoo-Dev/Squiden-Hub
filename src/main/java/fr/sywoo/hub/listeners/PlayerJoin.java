@@ -6,23 +6,18 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import fr.sywoo.api.account.AccountData;
 import fr.sywoo.api.rank.Rank;
 import fr.sywoo.api.rank.RankEnum;
-import fr.sywoo.api.serverdata.GameType;
-import fr.sywoo.api.serverdata.ServersData;
-import fr.sywoo.api.serverdata.uhc.UHCData;
-import fr.sywoo.api.settings.Settings.SettingsEnum;
 import fr.sywoo.api.spigot.LionSpigot;
+import fr.sywoo.api.utils.TabManager;
 import fr.sywoo.api.utils.Title;
 import fr.sywoo.hub.Hub;
 import fr.sywoo.hub.items.GameSelectorItem;
 import fr.sywoo.hub.items.GuildItem;
 import fr.sywoo.hub.items.LobbySelectorItem;
 import fr.sywoo.hub.items.ShopItem;
-import fr.sywoo.hub.utils.TabManager;
 
 public class PlayerJoin implements Listener {
 
@@ -36,7 +31,7 @@ public class PlayerJoin implements Listener {
 	public void onJoin(PlayerJoinEvent event){
 		Player player = event.getPlayer();
 		event.setJoinMessage(null);
-		
+
 		if(LionSpigot.get().getAccountManager().get(player.getUniqueId()) == null){
 			LionSpigot.get().getAccountManager().create(new AccountData(
 					player.getUniqueId(),
@@ -51,7 +46,8 @@ public class PlayerJoin implements Listener {
 		}
 
 
-		
+		new TabManager().reloadTab();
+
 		hub.getClassement().getHolograms().display(player);
 		hub.getClassement2().getHolograms().display(player);
 		if(LionSpigot.get().getAccountManager().get(player.getUniqueId()).getRank().hasPermission("hub.doublejump")){
@@ -80,56 +76,6 @@ public class PlayerJoin implements Listener {
 			}
 		}else {
 			player.setFlying(false);
-		}
-		
-		if(accountData.getLastServer() != null) {
-			String server = LionSpigot.get().getAccountManager().get(player.getUniqueId()).getLastServer();
-			if(LionSpigot.get().getServerManager().isExist(server)) {
-				ServersData data = LionSpigot.get().getServerDataManager().get(server);
-				if(data.getType() == GameType.UHCHOST) {
-					UHCData uhc_data = data.getUhcData();
-					if(uhc_data.getPvp() > 0) {
-						if (accountData.getSettings().getAutoReconnect() == SettingsEnum.ALLOW) {
-							player.sendMessage("§e==============================================================");
-							player.sendMessage("§aVous êtes dans §e" + server + "§a, Vous allez être téléporté !");
-							player.sendMessage("§e==============================================================");
-							new BukkitRunnable() {
-
-								@Override
-								public void run() {
-									LionSpigot.get().getPlayerServerManager().sendPlayerToServer(player, server);
-								}
-							}.runTaskLater(hub, 60);
-						}else {
-							player.sendMessage("§e==============================================================");
-							player.sendMessage("§aVous êtes dans §e" + server + "§a, faite /rejoin pour revenir en jeu !");
-							player.sendMessage("§e==============================================================");
-						}
-					}
-				}
-				if(data.getType() == GameType.KAPTUR || data.getType() == GameType.AGEOFEMPIRE || data.getType() == GameType.UHCRUN) {
-					if (accountData.getSettings().getAutoReconnect() == SettingsEnum.ALLOW) {
-						player.sendMessage("§e==============================================================");
-						player.sendMessage("§aVous êtes dans §e" + server + "§a, Vous allez être téléporté !");
-						player.sendMessage("§e==============================================================");
-						new BukkitRunnable() {
-
-							@Override
-							public void run() {
-								LionSpigot.get().getPlayerServerManager().sendPlayerToServer(player, server);
-							}
-						}.runTaskLater(hub, 60);
-					}else {
-						player.sendMessage("§e==============================================================");
-						player.sendMessage("§aVous êtes dans §e" + server + "§a, faite /rejoin pour revenir en jeu !");
-						player.sendMessage("§e==============================================================");
-					}
-				}
-				
-			}else {
-				LionSpigot.get().getAccountManager().update(LionSpigot.get().getAccountManager().get(player.getUniqueId()).setLastServer(null));
-			}
-
 		}
 	}
 }
