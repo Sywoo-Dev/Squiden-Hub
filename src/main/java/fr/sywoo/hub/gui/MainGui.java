@@ -57,7 +57,7 @@ public class MainGui extends IQuickInventory {
 				lores.add("§a» §eCliquez ici pour jouer");
 			}
 
-			quickInventory.addItem(new QuickItem(games.getIcon()).setName("§3" + games.getName() + " " + games.getAnnotation())
+			quickInventory.setItem(new QuickItem(games.getIcon()).setName("§3" + games.getName() + " " + games.getAnnotation())
 					.setLore(lores).toItemStack(), onClick -> {
 						if(games.getInventory() != null) {
 							games.getInventory().open(onClick.getPlayer());
@@ -69,7 +69,7 @@ public class MainGui extends IQuickInventory {
 								onClick.getPlayer().sendMessage("§cCe jeu est en maintenance !");
 							}
 						}
-					});
+					}, games.getSlot());
 		}
 
 

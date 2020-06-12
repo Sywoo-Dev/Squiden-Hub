@@ -34,7 +34,5 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/spigot-1.8.jar"/>
-	<classpathentry kind="lib" path="D:/Workspace/Api/target/API-1.0.0-Alpha.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

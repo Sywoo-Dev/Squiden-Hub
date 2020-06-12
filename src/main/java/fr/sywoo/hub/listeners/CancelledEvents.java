@@ -19,6 +19,7 @@ import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerExpChangeEvent;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.world.ChunkUnloadEvent;
 
 import fr.sywoo.hub.Hub;
@@ -50,6 +51,11 @@ public class CancelledEvents implements Listener {
 
 	@EventHandler
 	public void onBreakItemFrame(HangingBreakByEntityEvent event) {
+		event.setCancelled(true);
+	}
+	
+	@EventHandler
+	public void onInteract(PlayerInteractEvent event) {
 		event.setCancelled(true);
 	}
 

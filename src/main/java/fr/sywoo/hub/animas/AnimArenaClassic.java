@@ -16,7 +16,7 @@ import fr.sywoo.api.spigot.LionSpigot;
 public class AnimArenaClassic extends Animatronic {
 
 	public AnimArenaClassic() {
-		super(new Location(Bukkit.getWorld("world"), 58.5, 67.0, -68.5, 0, 0), "ArenaKit", ChatColor.GOLD, ChatColor.YELLOW, 20);
+		super(new Location(Bukkit.getWorld("world"), 52.5, 67.0, -67.5, 0, 0), "Arena Classique", ChatColor.GOLD, ChatColor.YELLOW, 20);
 		setWalking(true);
 		setStuff(new ItemStack(Material.LEATHER_HELMET), new ItemStack(Material.LEATHER_CHESTPLATE),
 				new ItemStack(Material.LEATHER_LEGGINGS), new ItemStack(Material.LEATHER_BOOTS), new ItemStack(Material.DIAMOND_SWORD));
@@ -33,7 +33,7 @@ public class AnimArenaClassic extends Animatronic {
 		Player player = event.getPlayer();
 		player.sendMessage("§a§lRecherche d'un serveur.");
 		for(ServiceInfoSnapshot snapshot : CloudNetDriver.getInstance().getCloudServiceProvider().getStartedCloudServices()){
-			if(snapshot.getServiceId().getName().startsWith("ArenaKit-")){
+			if(snapshot.getServiceId().getName().startsWith("Arena-")){
 				if(ServiceInfoSnapshotUtil.getPlayers(snapshot) == null) continue;
 				if(ServiceInfoSnapshotUtil.getPlayers(snapshot).size() < 25){
 					player.sendMessage("§a§lTéléporation sur " + snapshot.getServiceId().getName());

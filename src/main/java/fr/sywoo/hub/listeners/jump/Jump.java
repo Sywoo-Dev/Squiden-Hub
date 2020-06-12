@@ -5,6 +5,7 @@ import java.util.Date;
 
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
+import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -126,7 +127,10 @@ public class Jump implements Listener {
         if(event.getTo().getY() < 130){
             if(JumpPlayer.getInfos(player) == null) return;
             CheckPoint checkPoint = JumpPlayer.getInfos(player).getCheckPoint();
-            player.teleport(JumpPlayer.getInfos(player).getCheckPoint().getCuboid().getPCenter().setYaw(checkPoint.getYaw()).setPitch(checkPoint.getPitch()).getAsLocation());
+            Location loc = JumpPlayer.getInfos(player).getCheckPoint().getCuboid().getPCenter();
+            loc.setYaw(checkPoint.getYaw());
+            loc.setPitch(checkPoint.getPitch());
+            player.teleport(loc);
         }
     }
 }

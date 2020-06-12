@@ -10,24 +10,25 @@ import fr.sywoo.hub.gui.servers.UHCGui;
 
 public enum Games {
 
-	ARENA(new ItemStack(Material.IRON_SWORD), new ArenaGui(), "Arena","Sywoo", "Arena", "§d§k|§r §e§lBêta §d§k|", "Insert", "Description", "HERE"),
-	ARENAKIT(new ItemStack(Material.GOLD_SWORD), new ArenaGui(), "Arena Kit","Sywoo", "Arena", "§d§k|§r §e§lBêta §d§k|", "Insert", "Description", "HERE"),
-	HIKABRAIN(new ItemStack(Material.SANDSTONE), new HikabrainGUI(), "Hikabrain","Maygo", "Hikabrain", "§d§k|§r §e§lBêta §d§k|", "Insert", "Description", "HERE"),
-	KAPTUR(new ItemStack(Material.BEACON), null, "Kaptur", "Sywoo","Kaptur", "§d§k|§r §e§lBêta §d§k|", "Insert", "Description", "HERE"),
-	UHCRUN(new ItemStack(Material.GOLDEN_CARROT), null, "UhcRun","Maygo", "UhcRun", "§d§k|§r §e§lBêta §d§k|", "Insert", "Description", "HERE"),
-	SKYWARS(new ItemStack(Material.FEATHER), null, "Skywars","Sywoo", "Skywars", "§d§k|§r §e§lBêta §d§k|", "Insert", "Description", "HERE"),
-	SLASHER(new ItemStack(Material.IRON_AXE), null, "Slasher","Maygo", "Slasher", "§d§k|§r §e§lBêta §d§k|", "Insert", "Description", "HERE"),
-	GOLEMRUSH(new ItemStack(Material.IRON_BLOCK), null, "GolemRush","Maygo", "GolemRush", "§d§k|§r §e§lBêta §d§k|", "Insert", "Description", "HERE"),
-	AGEOFEMPIRE(new ItemStack(Material.GOLD_PICKAXE), null, "AgeOfEmpire","Sywoo", "AOE", "§d§k|§r §e§lBêta §d§k|", "Insert", "Description", "HERE"),
-	UHCHOST(new ItemStack(Material.GOLDEN_APPLE), new UHCGui(), "UHC Host","Sywoo & Maygo", "UHC", "§d§k|§r §e§lBêta §d§k|", "Insert", "Description", "HERE");
+	ARENA(12, new ItemStack(Material.IRON_SWORD), new ArenaGui(), "Arena","Sywoo", "Arena", "§d§k|§r §e§lBêta §d§k|", "Insert", "Description", "HERE"),
+	ARENAKIT(0, new ItemStack(Material.GOLD_SWORD), new ArenaGui(), "Arena Kit","Sywoo", "Arena", "§d§k|§r §e§lBêta §d§k|", "Insert", "Description", "HERE"),
+	HIKABRAIN(14, new ItemStack(Material.SANDSTONE), new HikabrainGUI(), "Hikabrain","Maygo", "Hikabrain", "§d§k|§r §e§lBêta §d§k|", "Insert", "Description", "HERE"),
+	KAPTUR(22, new ItemStack(Material.BEACON), null, "Kaptur", "Sywoo","Kaptur", "§d§k|§r §e§lBêta §d§k|", "Insert", "Description", "HERE"),
+	UHCRUN(20, new ItemStack(Material.GOLDEN_CARROT), null, "UhcRun","Maygo", "UhcRun", "§d§k|§r §e§lBêta §d§k|", "Insert", "Description", "HERE"),
+	SKYWARS(24, new ItemStack(Material.FEATHER), null, "Skywars","Sywoo", "Skywars", "§d§k|§r §e§lBêta §d§k|", "Insert", "Description", "HERE"),
+	SLASHER(32, new ItemStack(Material.IRON_AXE), null, "Slasher","Maygo", "Slasher", "§d§k|§r §e§lBêta §d§k|", "Insert", "Description", "HERE"),
+	GOLEMRUSH(30, new ItemStack(Material.IRON_BLOCK), null, "GolemRush","Maygo", "GolemRush", "§d§k|§r §e§lBêta §d§k|", "Insert", "Description", "HERE"),
+	AGEOFEMPIRE(42, new ItemStack(Material.GOLD_PICKAXE), null, "AgeOfEmpire","Sywoo", "AOE", "§d§k|§r §e§lBêta §d§k|", "Insert", "Description", "HERE"),
+	UHCHOST(38, new ItemStack(Material.GOLDEN_APPLE), new UHCGui(), "UHC Host","Sywoo & Maygo", "UHC", "§d§k|§r §e§lBêta §d§k|", "Insert", "Description", "HERE");
 
 	
 	private String name, dev, group, annotation;
 	private String[] description;
 	private ItemStack icon;
 	private IQuickInventory inventory;
+	private int slot;
 	
-	private Games(ItemStack icon, IQuickInventory inventory, String name,String developper, String group, String annotation, String... description) {
+	private Games(int slot, ItemStack icon, IQuickInventory inventory, String name,String developper, String group, String annotation, String... description) {
 		this.name = name;
 		this.dev = developper;
 		this.group = group;
@@ -35,6 +36,11 @@ public enum Games {
 		this.description = description;
 		this.icon = icon;
 		this.inventory = inventory;
+		this.slot = slot;
+	}
+	
+	public int getSlot() {
+		return slot;
 	}
 	
 	public String getName() {

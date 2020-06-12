@@ -9,6 +9,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.WorldCreator;
 import org.bukkit.entity.Player;
@@ -17,6 +18,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import fr.sywoo.api.spigot.LionSpigot;
 import fr.sywoo.api.utils.ChatManager;
+import fr.sywoo.hub.animas.AnimArenaClassic;
 import fr.sywoo.hub.animas.AnimArenaKit;
 import fr.sywoo.hub.animas.AnimClassicMeetup;
 import fr.sywoo.hub.animas.AnimGolemRush;
@@ -36,7 +38,6 @@ import fr.sywoo.hub.enums.Games;
 import fr.sywoo.hub.scoreboard.ScoreboardManager;
 import fr.sywoo.hub.utils.Classement;
 import fr.sywoo.hub.utils.EventManager;
-import fr.sywoo.hub.utils.Location;
 import fr.sywoo.hub.utils.PlayerUtils;
 
 public class Hub extends JavaPlugin {
@@ -47,6 +48,7 @@ public class Hub extends JavaPlugin {
     private Classement classement, classement2;
     private PlayerUtils playerUtils;
     
+    public Location carpet, slab;
     public List<Integer> customs = new ArrayList<>();
     public static Hub instance;
     
@@ -71,10 +73,20 @@ public class Hub extends JavaPlugin {
         executorMonoThread = Executors.newScheduledThreadPool(1);
         scoreboardManager = new ScoreboardManager(this);
         new WorldCreator("world").createWorld();
+        
+		carpet = new Location(Bukkit.getWorld("world"), 37, 62, -19);
+		carpet.getChunk().load(true);
+		carpet.getBlock().setType(Material.AIR);
+
+		slab = new Location(Bukkit.getWorld("world"), -88, 58, 0);
+		slab.getChunk().load(true);
+		slab.getBlock().setType(Material.AIR);
+		
         new EventManager(this).register(Bukkit.getPluginManager());
 
         maintaining.add(Games.GOLEMRUSH);
         maintaining.add(Games.AGEOFEMPIRE);
+
         
         this.chat =  new ChatManager(true, true);
 
@@ -99,9 +111,9 @@ public class Hub extends JavaPlugin {
 			}
 		}.runTaskTimer(this, 0, 72000);
 		
-        classement = new Classement(new Location(-110, 150, -59).getAsLocation(), "§dClassement du jump", LionSpigot.get().getAccountManager().getJumpers());
-        classement2 = new Classement(new Location(-143.5, 55, 13.5).getAsLocation(), "§dClassement du jump", LionSpigot.get().getAccountManager().getJumpers());
-        new Location(-86.5, 64, 38.5).getAsLocation().getBlock().setType(Material.DRAGON_EGG);
+        classement = new Classement(new Location(Bukkit.getWorld("world"), -110, 150, -59), "§dClassement du jump", LionSpigot.get().getAccountManager().getJumpers());
+        classement2 = new Classement(new Location(Bukkit.getWorld("world"), -143.5, 55, 13.5), "§dClassement du jump", LionSpigot.get().getAccountManager().getJumpers());
+        new Location(Bukkit.getWorld("world"), -86.5, 64, 38.5).getBlock().setType(Material.DRAGON_EGG);
         
         // BARRIER : new AnimArena();
         new AnimHikaBrain();
@@ -115,6 +127,7 @@ public class Hub extends JavaPlugin {
         new AnimSkyWars();
         
         new AnimArenaKit();
+        new AnimArenaClassic();
         
         //BARRIER : new AnimSlasher();
         new AnimGolemRush();

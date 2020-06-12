@@ -39,7 +39,7 @@
 	</repositories>
 
 	<dependencies>
-		<!--Spigot API -->
+		<!--"pom.xml"Spigot API -->
 		<dependency>
 			<groupId>org.spigotmc</groupId>
 			<artifactId>spigot-api</artifactId>
@@ -48,8 +48,8 @@
 			<systemPath>${project.basedir}/lib/spigot-1.8.8.jar</systemPath>
 		</dependency>
 		<dependency>
-			<groupId>fr.yazhog.lionapi</groupId>
-			<artifactId>LionUHCAPI</artifactId>
+			<groupId>fr.sywoo.api</groupId>
+			<artifactId>API</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<scope>system</scope>
 			<systemPath>${project.basedir}/lib/API-1.0.0-Alpha.jar</systemPath>

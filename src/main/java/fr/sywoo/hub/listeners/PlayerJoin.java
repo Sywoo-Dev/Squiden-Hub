@@ -1,15 +1,19 @@
 package fr.sywoo.hub.listeners;
 
+import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import fr.sywoo.api.account.AccountData;
 import fr.sywoo.api.rank.Rank;
 import fr.sywoo.api.rank.RankEnum;
+import fr.sywoo.api.settings.Settings.SettingsEnum;
 import fr.sywoo.api.spigot.LionSpigot;
 import fr.sywoo.api.utils.TabManager;
 import fr.sywoo.api.utils.Title;
@@ -68,6 +72,28 @@ public class PlayerJoin implements Listener {
 		player.getActivePotionEffects().clear();
 		player.setWalkSpeed(0.3F);
 		player.setGameMode(GameMode.ADVENTURE);
+		
+		new BukkitRunnable() {
+			
+			@SuppressWarnings("deprecation")
+			@Override
+			public void run() {
+				player.sendBlockChange(hub.carpet, Material.CARPET, (byte)0);
+				player.sendBlockChange(hub.slab, Material.STEP, (byte)3);
+			}
+		}.runTaskLater(hub, 20);
+		
+		if(accountData.getSettings().getSeeChat() == SettingsEnum.DISALLOW) {
+			for(Player players : Bukkit.getOnlinePlayers()) {
+				player.hidePlayer(players);
+			}
+		}else {
+			for(Player players : Bukkit.getOnlinePlayers()) {
+				if(!LionSpigot.get().getAccountManager().get(players.getUniqueId()).isVanished()) {
+					player.showPlayer(players);
+				}
+			}
+		}
 		
 		if (accountData.getRank().hasPermission("lionuhc.lobby.fly")) {
 			player.setAllowFlight(true);

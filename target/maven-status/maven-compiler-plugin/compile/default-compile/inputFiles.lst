@@ -3,6 +3,7 @@ D:\Workspace\Hub\src\main\java\fr\sywoo\hub\gui\servers\ArenaGui.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\scoreboard\PersonalScoreboard.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\animas\Animatronic.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\classements\HikabrainClassements.java
+D:\Workspace\Hub\src\main\java\fr\sywoo\hub\effects\Laser.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\items\JumpLeaveItem.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\npc\KapturGame.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\utils\EventManager.java
@@ -11,10 +12,10 @@ D:\Workspace\Hub\src\main\java\fr\sywoo\hub\items\GuildItem.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\animas\AnimArenaKit.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\gui\settings\SettingsGui.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\npc\SkywarsGame.java
+D:\Workspace\Hub\src\main\java\fr\sywoo\hub\effects\Effect.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\task\ServerTask.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\scoreboard\ScoreboardManager.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\command\RankCommand.java
-D:\Workspace\Hub\src\main\java\fr\sywoo\hub\utils\Location.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\Hub.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\listeners\PlayerJump.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\scoreboard\VObjective.java
@@ -29,6 +30,7 @@ D:\Workspace\Hub\src\main\java\fr\sywoo\hub\customes\HubSheep.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\items\GameSelectorItem.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\items\LobbySelectorItem.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\listeners\jump\Jump.java
+D:\Workspace\Hub\src\main\java\fr\sywoo\hub\listeners\PlayerSneak.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\customes\HubCrystal.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\utils\Cuboid.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\animas\AnimGolemRush.java
@@ -64,7 +66,6 @@ D:\Workspace\Hub\src\main\java\fr\sywoo\hub\listeners\PlayerMove.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\gui\servers\uhcs\LgGUI.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\jump\CheckPoint.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\listeners\PlayerQuit.java
-D:\Workspace\Hub\src\main\java\fr\sywoo\hub\listeners\PlayerInteract.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\animas\AnimSkyWars.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\gui\rank\AcceptCreateRank.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\task\EffectTask.java

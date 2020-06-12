@@ -2,6 +2,7 @@ package fr.sywoo.hub.listeners;
 
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.BlockFace;
@@ -14,13 +15,12 @@ import org.bukkit.util.Vector;
 import fr.sywoo.api.spigot.LionSpigot;
 import fr.sywoo.hub.Hub;
 import fr.sywoo.hub.utils.Cuboid;
-import fr.sywoo.hub.utils.Location;
 import fr.sywoo.hub.utils.MathsUtils;
 
 public class PlayerMove implements Listener {
 
-	Cuboid spawn = new Cuboid(new Location(-158, 0, -108).getAsLocation(), new Location(158, 240, 108).getAsLocation());
-	Cuboid jump = new Cuboid(new Location(-146, 139, 15).getAsLocation(), new Location(-150, 145, 10).getAsLocation());
+	Cuboid spawn = new Cuboid(new Location(Bukkit.getWorld("world"), -158, 0, -108), new Location(Bukkit.getWorld("world"), 158, 240, 108));
+	Cuboid jump = new Cuboid(new Location(Bukkit.getWorld("world"), -146, 139, 15), new Location(Bukkit.getWorld("world"), -150, 145, 10));
 
 	@EventHandler
 	public void onMove(PlayerMoveEvent event) {
@@ -42,7 +42,7 @@ public class PlayerMove implements Listener {
 			}
 		}
 		if (!spawn.contains(player)) {
-			player.teleport(new Location(0.5, 64, 0.5).getAsLocation());
+			player.teleport(new Location(Bukkit.getWorld("world"), 0.5, 64, 0.5));
 			player.sendMessage("§cHop hop ! Le monde est peut être dangereux !");
 		} else {
 			if (player.getLocation().add(0, -1, 0).getBlock().getType() != Material.AIR) {

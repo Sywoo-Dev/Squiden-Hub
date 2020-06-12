@@ -178,11 +178,11 @@ public class Cuboid implements Iterable<Block>, Cloneable, ConfigurationSerializ
                 this.getLowerY() + (y1 - this.getLowerY()) / 2.0, this.getLowerZ() + (z1 - this.getLowerZ()) / 2.0);
     }
 
-    public fr.sywoo.hub.utils.Location getPCenter() {
+    public Location getPCenter() {
         int x1 = this.getUpperX() + 1;
         int y1 = this.getUpperY() + 1;
         int z1 = this.getUpperZ() + 1;
-        return new fr.sywoo.hub.utils.Location(this.getWorld(), this.getLowerX() + (x1 - this.getLowerX()) / 2.0,
+        return new Location(this.getWorld(), this.getLowerX() + (x1 - this.getLowerX()) / 2.0,
                 this.getLowerY() + (y1 - this.getLowerY()) / 2.0, this.getLowerZ() + (z1 - this.getLowerZ()) / 2.0);
     }
 
@@ -690,6 +690,14 @@ public class Cuboid implements Iterable<Block>, Cloneable, ConfigurationSerializ
             }
         }
 
+    }
+     
+    public Location getRandomLocation() {
+    	double x = (double) (Math.random() * (getUpperX() - getLowerX()) + getLowerX());
+    	double z = (double) (Math.random() * (getUpperZ() - getLowerZ()) + getLowerZ());
+    	World w = getWorld();
+
+		return new Location(w, x, getLowerY(), z);
     }
 
 }
