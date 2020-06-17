@@ -11,7 +11,9 @@ import java.util.concurrent.ScheduledExecutorService;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.WorldCreator;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -35,6 +37,7 @@ import fr.sywoo.hub.customes.HubEnderman;
 import fr.sywoo.hub.customes.HubSheep;
 import fr.sywoo.hub.customes.HubSnowMan;
 import fr.sywoo.hub.enums.Games;
+import fr.sywoo.hub.nightclub.NightClub;
 import fr.sywoo.hub.scoreboard.ScoreboardManager;
 import fr.sywoo.hub.utils.Classement;
 import fr.sywoo.hub.utils.EventManager;
@@ -47,6 +50,7 @@ public class Hub extends JavaPlugin {
     private ScheduledExecutorService scheduledExecutorService;
     private Classement classement, classement2;
     private PlayerUtils playerUtils;
+    public NightClub nightClub;
     
     public Location carpet, slab;
     public List<Integer> customs = new ArrayList<>();
@@ -68,11 +72,12 @@ public class Hub extends JavaPlugin {
     public void onEnable() {
     	instance = this;
 
+        new WorldCreator("world").createWorld();
         playerUtils = new PlayerUtils();
+        nightClub = new NightClub();
         scheduledExecutorService = Executors.newScheduledThreadPool(16);
         executorMonoThread = Executors.newScheduledThreadPool(1);
         scoreboardManager = new ScoreboardManager(this);
-        new WorldCreator("world").createWorld();
         
 		carpet = new Location(Bukkit.getWorld("world"), 37, 62, -19);
 		carpet.getChunk().load(true);
@@ -145,7 +150,13 @@ public class Hub extends JavaPlugin {
     }
 
     private void stop() {
-
+    	for(World world : Bukkit.getWorlds()) {
+    		for(Entity entity : world.getEntities()) {
+    			if(!(entity instanceof Player)) {
+    				entity.remove();
+    			}
+    		}
+    	}
     }
 
     public PlayerUtils getPlayerUtils() {
@@ -171,6 +182,10 @@ public class Hub extends JavaPlugin {
     public ScoreboardManager getScoreboardManager() {
         return scoreboardManager;
     }
+
+	public NightClub getNightClub() {
+		return nightClub;
+	}
 
 
 }

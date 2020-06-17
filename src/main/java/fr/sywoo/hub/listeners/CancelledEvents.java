@@ -1,6 +1,7 @@
 package fr.sywoo.hub.listeners;
 
 import org.bukkit.GameMode;
+import org.bukkit.Material;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -22,7 +23,10 @@ import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.world.ChunkUnloadEvent;
 
+import fr.sywoo.api.account.AccountData;
+import fr.sywoo.api.spigot.LionSpigot;
 import fr.sywoo.hub.Hub;
+import fr.sywoo.hub.gui.nightclub.NightClubGui;
 
 public class CancelledEvents implements Listener {
 
@@ -56,6 +60,19 @@ public class CancelledEvents implements Listener {
 	
 	@EventHandler
 	public void onInteract(PlayerInteractEvent event) {
+		if(event.getClickedBlock() == null) return;
+		if(event.getClickedBlock().getType() == Material.STONE_BUTTON) {
+			if(Hub.instance.getNightClub().getButton().equals(event.getClickedBlock().getLocation())) {
+				//BOUTON DE LA DISCOTEQUE
+				if(!LionSpigot.get().getAccountManager().get(event.getPlayer().getUniqueId()).getRank().getPower().equalsIgnoreCase("E")) {
+					// IL A LE GRADE
+					new NightClubGui(Hub.instance.getNightClub()).open(event.getPlayer());
+					return;
+				}else {
+					event.getPlayer().sendMessage("§cVous ne pouvez pas configurer la discothèque ! Achetez un grade sur §lsquiden.fr/shop");
+				}
+			}
+		}
 		event.setCancelled(true);
 	}
 

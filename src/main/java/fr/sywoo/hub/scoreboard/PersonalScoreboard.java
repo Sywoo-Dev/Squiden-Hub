@@ -5,6 +5,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 import fr.sywoo.api.account.AccountData;
+import fr.sywoo.api.guilds.Guilds;
 import fr.sywoo.api.rank.Rank;
 import fr.sywoo.api.spigot.LionSpigot;
 import fr.sywoo.hub.utils.MathsUtils;
@@ -28,7 +29,13 @@ public class PersonalScoreboard {
 	public void setLines(String ip){
 		AccountData data = LionSpigot.get().getAccountManager().get(player.getUniqueId());
 		Rank rank = data.getRank();
-		
+		Guilds guild = LionSpigot.get().getGuildsManager().get(data.getGuildsName());
+		String name = "Aucune";
+		if(guild != null) {
+			if(!guild.getName().equalsIgnoreCase("Aucune")) {
+				name = guild.getDisplayName(); 
+			}
+		}
         objectiveSign.setLine(0, "§2");
         objectiveSign.setLine(1, "§7»    §6Compte");
         objectiveSign.setLine(2, "§7» §6Grade : " + rank.getName());
@@ -36,7 +43,7 @@ public class PersonalScoreboard {
         objectiveSign.setLine(4, "§7» §b⛃ " + new MathsUtils().format(data.getSquids()));
         objectiveSign.setLine(5, "§7");
         objectiveSign.setLine(6, "§7»    §2Guilde");
-        objectiveSign.setLine(7, "§7» §aGuilde : " + data.getGuildsName());
+        objectiveSign.setLine(7, "§7» §aGuilde : " + name);
         objectiveSign.setLine(8, "§7» §aPoste : " + ChatColor.translateAlternateColorCodes('&', data.getGuildRank()));
         objectiveSign.setLine(9, "§3");
         objectiveSign.setLine(10, "§7» §3Lobby §c#" + Bukkit.getServerName().split("-")[1]);
