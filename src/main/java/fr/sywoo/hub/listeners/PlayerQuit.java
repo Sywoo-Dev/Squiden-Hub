@@ -7,7 +7,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 import fr.sywoo.api.spigot.LionSpigot;
 import fr.sywoo.hub.Hub;
-import fr.sywoo.hub.gui.servers.ServerPlayerGui;
+import fr.sywoo.hub.gui.servers.LaunchServerGUI;
 
 public class PlayerQuit implements Listener {
 
@@ -23,9 +23,9 @@ public class PlayerQuit implements Listener {
         event.setQuitMessage(null);
                 
         hub.getScoreboardManager().onLogout(player);
-        if(ServerPlayerGui.getPlayerStartedServer().containsKey(player.getUniqueId())){
-            LionSpigot.get().getServerManager().deleteServer(ServerPlayerGui.getPlayerStartedServer().get(player.getUniqueId()));
-            ServerPlayerGui.getPlayerStartedServer().remove(player.getUniqueId());
+        if(LaunchServerGUI.getPlayerStartedServer().containsKey(player.getUniqueId())){
+            LionSpigot.get().getServerManager().deleteServer(LaunchServerGUI.getPlayerStartedServer().get(player.getUniqueId()));
+            LaunchServerGUI.getPlayerStartedServer().remove(player.getUniqueId());
         }
     }
 
