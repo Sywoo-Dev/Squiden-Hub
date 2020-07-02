@@ -14,7 +14,6 @@ import fr.sywoo.hub.listeners.PlayerMove;
 import fr.sywoo.hub.listeners.PlayerQuit;
 import fr.sywoo.hub.listeners.PlayerSneak;
 import fr.sywoo.hub.listeners.jump.Jump;
-import fr.sywoo.hub.task.EffectTask;
 import fr.sywoo.hub.task.MessageTask;
 import fr.sywoo.hub.task.ScoreboardTask;
 import fr.sywoo.hub.task.ServerTask;
@@ -39,7 +38,6 @@ public class EventManager {
 		new ScoreboardTask(hub).runTaskTimer(hub, 20, 20);
 		new ServerTask().runTaskTimer(hub, 20*60, 0);
 		new MessageTask().runTaskTimer(hub, 20*60, 20*60);
-		new EffectTask().runTaskTimer(hub, 0, 10);
 		hub.getCommand("rank").setExecutor(new RankCommand());
 		hub.getCommand("jump").setExecutor(new JumpCommand());
 		hub.getCommand("perm").setExecutor(new PermCommand());

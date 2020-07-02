@@ -2,6 +2,7 @@ fr\sywoo\hub\gui\servers\LaunchServerGUI$1.class
 fr\sywoo\hub\items\ShopItem.class
 fr\sywoo\hub\items\LobbySelectorItem.class
 fr\sywoo\hub\utils\Classement$1.class
+fr\sywoo\hub\nightclub\effects\DanceFloorEffect$1.class
 fr\sywoo\hub\scoreboard\VObjective$RawObjective.class
 fr\sywoo\hub\animas\AnimGolemRush.class
 fr\sywoo\hub\scoreboard\PersonalScoreboard.class
@@ -12,14 +13,15 @@ fr\sywoo\hub\listeners\PlayerJoin$1.class
 fr\sywoo\hub\animas\AnimClassicMeetup.class
 fr\sywoo\hub\utils\Cuboid$CuboidIterator.class
 fr\sywoo\hub\utils\Holograms.class
-fr\sywoo\hub\task\EffectTask$2.class
 fr\sywoo\hub\command\RankCommand.class
+fr\sywoo\hub\nightclub\effects\CircleEffect$1.class
 fr\sywoo\hub\animas\Animatronic$2.class
-fr\sywoo\hub\effects\Laser.class
 fr\sywoo\hub\customes\HubEnderman.class
+fr\sywoo\hub\nightclub\effects\BoumEffect$2.class
 fr\sywoo\hub\animas\AnimUHCRun.class
 fr\sywoo\hub\items\JumpLeaveItem.class
 fr\sywoo\hub\scoreboard\Reflection$DataType.class
+fr\sywoo\hub\nightclub\effects\CylinderEffect$2.class
 fr\sywoo\hub\gui\servers\HikabrainGUI.class
 fr\sywoo\hub\listeners\PlayerChat.class
 fr\sywoo\hub\scoreboard\VObjective$ObjectiveLocation.class
@@ -28,15 +30,15 @@ fr\sywoo\hub\gui\servers\uhcs\TaupeGUI.class
 fr\sywoo\hub\animas\AnimSkyWars.class
 fr\sywoo\hub\Hub$1.class
 fr\sywoo\hub\utils\Classement.class
-fr\sywoo\hub\effects\Effect.class
 fr\sywoo\hub\listeners\CancelledEvents.class
 fr\sywoo\hub\animas\Animatronic$1.class
 fr\sywoo\hub\utils\MathsUtils.class
 fr\sywoo\hub\command\PermCommand.class
-fr\sywoo\hub\task\EffectTask$4$1.class
 fr\sywoo\hub\items\GameSelectorItem.class
 fr\sywoo\hub\customes\HubCrystal.class
 fr\sywoo\hub\gui\servers\uhcs\ClassicGUI.class
+fr\sywoo\hub\nightclub\effects\BoumEffect.class
+fr\sywoo\hub\nightclub\effects\projectors\ProjectorEffect.class
 fr\sywoo\hub\command\JumpCommand.class
 fr\sywoo\hub\utils\Travel$1.class
 fr\sywoo\hub\Hub.class
@@ -52,26 +54,48 @@ fr\sywoo\hub\scoreboard\Reflection$PackageType.class
 fr\sywoo\hub\scoreboard\Reflection$PacketType.class
 fr\sywoo\hub\customes\HubSnowMan.class
 fr\sywoo\hub\gui\servers\uhcs\LgGUI.class
-fr\sywoo\hub\task\EffectTask$1.class
+fr\sywoo\hub\nightclub\effects\projectors\Projector.class
+fr\sywoo\hub\gui\nightclub\projectors\ProjectorsGui.class
 fr\sywoo\hub\task\ScoreboardTask.class
+fr\sywoo\hub\nightclub\effects\SkyEffect$1.class
 fr\sywoo\hub\task\MessageTask.class
+<<<<<<< HEAD
 fr\sywoo\hub\utils\Display.class
+=======
+fr\sywoo\hub\nightclub\effects\SkyEffect.class
+>>>>>>> 1580d7fd16d45b545d85bc89d80ad0702c94556a
 fr\sywoo\hub\gui\rank\AcceptCreateRank.class
 fr\sywoo\hub\listeners\PlayerJump.class
 fr\sywoo\hub\gui\servers\ServerPlayerGui.class
+fr\sywoo\hub\nightclub\effects\ParticleEffect.class
+fr\sywoo\hub\nightclub\effects\CylinderEffect.class
 fr\sywoo\hub\gui\settings\SettingsGui$1.class
 fr\sywoo\hub\utils\FormatTime.class
 fr\sywoo\hub\classements\SkywarsKills.class
 fr\sywoo\hub\listeners\PlayerSneak$1.class
+<<<<<<< HEAD
+=======
+fr\sywoo\hub\gui\servers\ServerPlayerGui$1.class
+fr\sywoo\hub\nightclub\effects\Effect.class
+>>>>>>> 1580d7fd16d45b545d85bc89d80ad0702c94556a
 fr\sywoo\hub\scoreboard\ScoreboardManager.class
 fr\sywoo\hub\customes\HubChampiMeuh.class
 fr\sywoo\hub\animas\Animatronic$3.class
+fr\sywoo\hub\nightclub\effects\projectors\RandomEffect$1.class
 fr\sywoo\hub\utils\PlayerUtils.class
+<<<<<<< HEAD
 fr\sywoo\hub\classements\SkywarsVictory.class
+=======
+fr\sywoo\hub\nightclub\effects\BoumEffect$1.class
+fr\sywoo\hub\nightclub\effects\CylinderEffect$1.class
+>>>>>>> 1580d7fd16d45b545d85bc89d80ad0702c94556a
 fr\sywoo\hub\utils\EventManager.class
 fr\sywoo\hub\gui\servers\UHCGui.class
 fr\sywoo\hub\player\JumpPlayer$1.class
+fr\sywoo\hub\nightclub\NightClub.class
 fr\sywoo\hub\jump\CheckPoint.class
+fr\sywoo\hub\nightclub\effects\projectors\RandomEffect.class
+fr\sywoo\hub\utils\SkullProfil.class
 fr\sywoo\hub\listeners\jump\Jump.class
 fr\sywoo\hub\classements\HikabrainClassements.class
 fr\sywoo\hub\scoreboard\Reflection.class
@@ -81,12 +105,15 @@ fr\sywoo\hub\animas\AnimTaupe.class
 fr\sywoo\hub\gui\MainGui.class
 fr\sywoo\hub\utils\Cuboid$CuboidDirection.class
 fr\sywoo\hub\enums\Games.class
+fr\sywoo\hub\nightclub\effects\ParticleEffect$1.class
 fr\sywoo\hub\utils\Cuboid.class
 fr\sywoo\hub\listeners\PlayerSneak.class
-fr\sywoo\hub\task\EffectTask$3.class
+fr\sywoo\hub\gui\nightclub\NightClubGui.class
 fr\sywoo\hub\gui\settings\SettingsGui.class
 fr\sywoo\hub\listeners\PlayerQuit.class
+fr\sywoo\hub\nightclub\effects\DanceFloorEffect.class
 fr\sywoo\hub\utils\QuickString.class
+<<<<<<< HEAD
 fr\sywoo\hub\enums\UhcBiome.class
 fr\sywoo\hub\Hub$2.class
 fr\sywoo\hub\utils\CustomEntity.class
@@ -94,17 +121,25 @@ fr\sywoo\hub\npc\SkywarsGame$1.class
 fr\sywoo\hub\classements\ArenaClassement.class
 fr\sywoo\hub\utils\Travel.class
 fr\sywoo\hub\classements\ArenaKitClassement.class
+=======
+fr\sywoo\hub\nightclub\effects\CircleEffect.class
+fr\sywoo\hub\Hub$2.class
+fr\sywoo\hub\utils\CustomEntity.class
+fr\sywoo\hub\npc\SkywarsGame$1.class
+fr\sywoo\hub\nightclub\effects\projectors\RandomSmoothEffect$1.class
+>>>>>>> 1580d7fd16d45b545d85bc89d80ad0702c94556a
 fr\sywoo\hub\scoreboard\VObjective$VScore.class
 fr\sywoo\hub\animas\AnimKaptur.class
-fr\sywoo\hub\task\EffectTask$4.class
+fr\sywoo\hub\nightclub\effects\projectors\Projector$1.class
+fr\sywoo\hub\gui\nightclub\effects\EffectsGui.class
 fr\sywoo\hub\npc\SkywarsGame.class
 fr\sywoo\hub\task\ServerTask.class
-fr\sywoo\hub\task\EffectTask.class
 fr\sywoo\hub\animas\AnimArenaKit.class
 fr\sywoo\hub\scoreboard\ObjectiveSign.class
 fr\sywoo\hub\items\JumpCheckpointItem.class
 fr\sywoo\hub\npc\KapturGame.class
 fr\sywoo\hub\player\JumpPlayer.class
 fr\sywoo\hub\animas\Animatronic$4.class
+fr\sywoo\hub\nightclub\effects\projectors\RandomSmoothEffect.class
 fr\sywoo\hub\gui\rank\RankMenu.class
 fr\sywoo\hub\npc\KapturGame$1.class

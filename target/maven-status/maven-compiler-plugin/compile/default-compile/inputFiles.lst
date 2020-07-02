@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\gui\servers\HikabrainGUI.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\gui\servers\ArenaGui.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\scoreboard\PersonalScoreboard.java
@@ -78,3 +79,90 @@ D:\Workspace\Hub\src\main\java\fr\sywoo\hub\animas\AnimSkyWars.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\gui\rank\AcceptCreateRank.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\task\EffectTask.java
 D:\Workspace\Hub\src\main\java\fr\sywoo\hub\utils\MathsUtils.java
+=======
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\gui\servers\uhcs\TaupeGUI.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\command\PermCommand.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\utils\PlayerUtils.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\command\RankCommand.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\customes\HubCrystal.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\customes\HubSheep.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\nightclub\effects\projectors\ProjectorEffect.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\task\MessageTask.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\listeners\CancelledEvents.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\scoreboard\PersonalScoreboard.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\animas\AnimSkyWars.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\customes\HubChampiMeuh.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\nightclub\effects\CylinderEffect.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\animas\AnimGolemRush.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\customes\HubEnderman.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\listeners\PlayerSneak.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\listeners\PlayerChat.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\nightclub\effects\BoumEffect.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\items\ShopItem.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\nightclub\effects\projectors\Projector.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\scoreboard\VObjective.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\npc\SkywarsGame.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\animas\AnimKaptur.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\utils\QuickString.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\utils\MathsUtils.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\gui\MainGui.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\listeners\PlayerQuit.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\utils\Classement.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\items\JumpLeaveItem.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\listeners\PlayerMove.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\nightclub\effects\Effect.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\nightclub\effects\projectors\RandomSmoothEffect.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\gui\servers\uhcs\LgGUI.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\Hub.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\customes\HubSnowMan.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\nightclub\effects\SkyEffect.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\jump\CheckPoint.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\classements\HikabrainClassements.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\nightclub\effects\CircleEffect.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\player\JumpPlayer.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\listeners\PlayerJump.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\nightclub\effects\DanceFloorEffect.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\gui\rank\RankMenu.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\utils\FormatTime.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\enums\Games.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\animas\AnimHikaBrain.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\utils\Holograms.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\nightclub\effects\projectors\RandomEffect.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\utils\Cuboid.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\items\JumpCheckpointItem.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\command\JumpCommand.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\animas\AnimLG.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\gui\servers\LobbyGui.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\animas\AnimArenaClassic.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\listeners\jump\Jump.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\gui\nightclub\effects\EffectsGui.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\gui\servers\ArenaGui.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\gui\nightclub\NightClubGui.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\gui\servers\UHCGui.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\animas\AnimUHCRun.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\gui\servers\ServerPlayerGui.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\animas\AnimTaupe.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\scoreboard\ObjectiveSign.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\animas\Animatronic.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\npc\KapturGame.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\nightclub\effects\ParticleEffect.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\items\GuildItem.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\utils\CustomEntity.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\scoreboard\Reflection.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\gui\servers\uhcs\ClassicGUI.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\scoreboard\ScoreboardManager.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\utils\SkullProfil.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\gui\settings\SettingsGui.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\gui\servers\HikabrainGUI.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\gui\nightclub\projectors\ProjectorsGui.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\animas\AnimArenaKit.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\task\ScoreboardTask.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\gui\rank\AcceptCreateRank.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\nightclub\NightClub.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\task\ServerTask.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\animas\AnimClassicMeetup.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\utils\EventManager.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\items\LobbySelectorItem.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\items\GameSelectorItem.java
+D:\Projects Code\Eclipse\Squiden\Hub\src\main\java\fr\sywoo\hub\listeners\PlayerJoin.java
+>>>>>>> 1580d7fd16d45b545d85bc89d80ad0702c94556a

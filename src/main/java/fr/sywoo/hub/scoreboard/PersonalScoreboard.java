@@ -33,7 +33,11 @@ public class PersonalScoreboard {
 		String name = "Aucune";
 		if(guild != null) {
 			if(!guild.getName().equalsIgnoreCase("Aucune")) {
+<<<<<<< HEAD
 				name = guild.getDisplayName();
+=======
+				name = guild.getDisplayName(); 
+>>>>>>> 1580d7fd16d45b545d85bc89d80ad0702c94556a
 			}
 		}
         objectiveSign.setLine(0, "§2");
