@@ -37,7 +37,7 @@ public class MainGui extends IQuickInventory {
 		quickInventory.setVerticalLine(new QuickItem(Material.STAINED_GLASS_PANE).setName(" ").toItemStack(), 0, 45);
 		quickInventory.setVerticalLine(new QuickItem(Material.STAINED_GLASS_PANE).setName(" ").toItemStack(), 8, 53);
 		hub.getPlayerUtils();
-
+		
 		for(Games games : Games.values()) {
 			if(games == Games.ARENAKIT) continue;
 			List<String> lores = new ArrayList<String>(Arrays.asList(games.getDescription()));

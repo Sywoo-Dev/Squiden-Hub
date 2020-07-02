@@ -30,7 +30,11 @@ import fr.sywoo.hub.animas.AnimLG;
 import fr.sywoo.hub.animas.AnimSkyWars;
 import fr.sywoo.hub.animas.AnimTaupe;
 import fr.sywoo.hub.animas.AnimUHCRun;
+import fr.sywoo.hub.classements.ArenaClassement;
+import fr.sywoo.hub.classements.ArenaKitClassement;
 import fr.sywoo.hub.classements.HikabrainClassements;
+import fr.sywoo.hub.classements.SkywarsKills;
+import fr.sywoo.hub.classements.SkywarsVictory;
 import fr.sywoo.hub.customes.HubChampiMeuh;
 import fr.sywoo.hub.customes.HubCrystal;
 import fr.sywoo.hub.customes.HubEnderman;
@@ -96,6 +100,11 @@ public class Hub extends JavaPlugin {
         this.chat =  new ChatManager(true, true);
 
         this.hikabrainClassement = new HikabrainClassements();
+        
+        new ArenaClassement();
+        new ArenaKitClassement();
+        new SkywarsVictory();
+        new SkywarsKills();
         
         new BukkitRunnable() {
 			

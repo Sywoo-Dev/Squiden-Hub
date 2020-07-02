@@ -64,7 +64,6 @@ public class PlayerJoin implements Listener {
 		new Title().sendTitle(player, 5, 100, 5, "§3» §b§lSquiden §3«", "§a§lplay.squiden.fr");
 		new TabManager().reloadTab();
 		hub.getScoreboardManager().onLogin(player);
-
 		player.getInventory().setItem(4, new GameSelectorItem().toItemStack());
 		player.getInventory().setItem(8, new LobbySelectorItem().toItemStack());
 		player.getInventory().setItem(0, new ShopItem().toItemStack());

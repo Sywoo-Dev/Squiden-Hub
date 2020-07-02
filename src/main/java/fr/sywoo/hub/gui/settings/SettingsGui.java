@@ -29,7 +29,7 @@ public class SettingsGui extends IQuickInventory {
 	public void contents(QuickInventory quickInventory) {
 		AccountData account = LionSpigot.get().getAccountManager().get(quickInventory.getOwner().getUniqueId());
 		quickInventory.updateItem("settings", taskUpdate -> {
-			
+
 			quickInventory.setItem(new QuickItem(Material.valueOf(account.getSettings().getFriend().getItemStack()),
 					1, DyeColor.valueOf(account.getSettings().getFriend().getDyeColor()).getData()).setName("§bDemande d'ami")
 					.setLore("§7Actuellement : " + account.getSettings().getFriend().getName()).toItemStack(), quickEvent -> {
@@ -40,19 +40,19 @@ public class SettingsGui extends IQuickInventory {
 					.setLore("§7Actuellement : " + account.getSettings().getAutoReconnect().getName()).toItemStack(), quickEvent -> {
 						LionSpigot.get().getAccountManager().update(account.setSettings(account.getSettings().setAutoRecconnect(allow(account.getSettings().getAutoReconnect()))));
 					}, 12);
-			
+
 			quickInventory.setItem(new QuickItem(Material.valueOf(account.getSettings().getMessage().getItemStack()),
 					1, DyeColor.valueOf(account.getSettings().getMessage().getDyeColor()).getData()).setName("§bGestion des messages privés")
 					.setLore("§7Actuellement : " + account.getSettings().getMessage().getName()).toItemStack(), quickEvent -> {
 						LionSpigot.get().getAccountManager().update(account.setSettings(account.getSettings().setMessage(toggle(account.getSettings().getMessage()))));
 					}, 13);
-			
+
 			quickInventory.setItem(new QuickItem(Material.valueOf(account.getSettings().getSeeChat().getItemStack()),
 					1, DyeColor.valueOf(account.getSettings().getSeeChat().getDyeColor()).getData()).setName("§bGestion du chat (Lobby)")
 					.setLore("§7Actuellement : " + account.getSettings().getSeeChat().getName()).toItemStack(), quickEvent -> {
 						LionSpigot.get().getAccountManager().update(account.setSettings(account.getSettings().setSeeChat(toggle(account.getSettings().getSeeChat()))));
 					}, 14);
-			
+
 			quickInventory.setItem(new QuickItem(Material.valueOf(account.getSettings().getSeePlayers().getItemStack()),
 					1, DyeColor.valueOf(account.getSettings().getSeePlayers().getDyeColor()).getData()).setName("§bParticules et Joueurs")
 					.setLore("§7Actuellement : " + account.getSettings().getSeePlayers().getName()).toItemStack(), quickEvent -> {
@@ -69,13 +69,22 @@ public class SettingsGui extends IQuickInventory {
 							}
 						}
 					}, 15);
-			
+
+//			quickInventory.setItem(new QuickItem(Material.IRON_SWORD).setName("§CParticule de Mort").toItemStack(), quickEvent -> {
+//				Bukkit.dispatchCommand(quickEvent.getPlayer(), "deathparticle");
+//			}, 20);
+//
+//
+//			quickInventory.setItem(new QuickItem(Material.DIAMOND_SWORD).setName("§CParticule de Kill").toItemStack(), quickEvent -> {
+//				quickEvent.getPlayer().sendMessage("§cSOON");
+//			}, 24);
+
 		}, 1);
 
 		quickInventory.setItem(new QuickItem(Material.BARRIER).setName("§c§lFermer").toItemStack(), quickEvent -> {
 			quickEvent.getPlayer().closeInventory();
 		}, 44);
-		
+
 		quickInventory.setItem(new QuickItem(Material.ARROW).setName("§cRetour").toItemStack(), quickEvent -> {
 			new MainGui(hub).open(quickEvent.getPlayer());
 		}, 0);
@@ -92,7 +101,7 @@ public class SettingsGui extends IQuickInventory {
 		}
 		return null;
 	}
-	
+
 	private Settings.SettingsEnum toggle(Settings.SettingsEnum settingsEnum){
 		switch (settingsEnum){
 		case ALLOW:
